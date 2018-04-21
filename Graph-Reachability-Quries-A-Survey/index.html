@@ -38,25 +38,22 @@
 					<br> Student : Yi-Wei,Wang
 				</div>
 			</section>
-			<section>
-				<h3>
-					Outline
-				</h3>
-				<div>
-					<div class="left-align">
-						0.&emsp;Introduction
-						<br> 1.&emsp;Tree + SSPI
-						<br> 2.&emsp;GRIPP
-						<br> 3.&emsp;Dual-Labeling
-						<br> 4.&emsp;Tree Cover
-						<br> 5.&emsp;Chain Cover
-						<br> 6.&emsp;Path-Tree Cover
-						<br> 7.&emsp;2-Hop Cover
-						<br> 8.&emsp;3-Hop Cover
-						<br> 9.&emsp;Distance-Aware 2-Hop Cover
-						<br> 10.&emsp;Graph Pattern Matching
-					</div>
-				</div>
+			<section data-markdown>
+				<textarea data-template>
+					### Outline
+
+					- Introduction
+					<br> 1. Tree + SSPI
+					<br> 2. GRIPP
+					<br> 3. Dual-Labeling
+					<br> 4. Tree Cover
+					<br> 5. Chain Cover
+					<br> 6. Path-Tree Cover
+					<br> 7. 2-Hop Cover
+					<br> 8. 3-Hop Cover
+					<br> 9. Distance-Aware 2-Hop Cover
+					<br> 10. Graph Pattern Matching
+				</textarea>
 			</section>
 			<section>
 				<section>
@@ -277,11 +274,11 @@
 					<textarea data-template>
 						### Chain Cover
 						- A chain cover of $G$ is a set of <font color="#008ACD">pairwise disjoint chains</font>, $C\_1$,$C\_2$,...,$C\_k$<br>
-						Here, a chain $C\_i$ =$v\_{i1}$ ↝$v\_{i2}$↝...↝$v\_{ik}$ where $v\_{ij}$ is a node in$G$ and $v\_{ij+1}$ is reachable from $v\_{ij}$ in$G$.			
+						Here, a chain <font color="#008ACD">$C\_i$ =$v\_{i1}$ ↝$v\_{i2}$↝...↝$v\_{ik}$</font> where $v\_{ij}$ is a node in$G$ and $v\_{ij+1}$ is reachable from $v\_{ij}$ in$G$.			
 						- The optimal chain cover of $G$ is a chain cover of $G$ that
 						contains the <font color="#008ACD">least number of chains</font> among all possible chain covers of $G$.
 
-						![](https://i.imgur.com/7voKAue.png)
+						
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -289,30 +286,173 @@
 						### Chain Cover
 						- Each node $v\_i$ ∈ $G$ is assigned a code, denote chaincode($v\_i$), which
 						is a list of pairs,<br>
-						{(1,$p\_{i,1}$), (2,$p\_{i,2}$), ⋅ ⋅ ⋅ , (k,$p\_{i,k}$)}. Each pair (j,$p\_{i,j}$) means
+						<font color="#008ACD">{(1,$p\_{i,1}$), (2,$p\_{i,2}$), ⋅ ⋅ ⋅ , (k,$p\_{i,k}$)}</font>. Each pair (j,$p\_{i,j}$) means
 						that the node $v\_i$ can reach any nodes from the position $p\_{i,j}$ in the j-th chain. If
 						$v\_i$ cannot reach any node in the j-th chain, then $p\_{i,j}$ = +∞.
 					</textarea>
 				</section>
+				
+				<section data-markdown>
+					<textarea data-template>
+						### Chain Cover
+						
+						![](https://i.imgur.com/mQgc9xK.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://i.imgur.com/mznHMVH.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Chain Cover
+						
+						- The algorithm shows how to compute chaincode($v\_i$) for every $v\_i$ ∈ $G$. It visits every node in $G$ <font color="#008ACD">in the reverse of topological order</font> (line 3).
+						For each node visited, its chaincode($v\_i$) is updated using its immediate successors if the corresponding position in the $l$-th chain, $C\_l$ ,
+						of an immediate successor is smaller than the current position $v\_i$ has in $C\_l$.	
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Chain Cover
+						
+						- A reachability query $v\_a$ ↝ $v\_d$ can be answered using a predicate $P\_c$(, ) such
+						that $v\_a$ ↝ $v\_d$ is true if and only if $v\_a$ appears at the $p\_{a,j}$ position in a chain $C\_j$
+						and <font color="#008ACD">$p\_{d,j}$ ≤ $p\_{a,j}$</font> . In other words, $v\_a$ can reach $v\_d$ in a chain $C\_j$.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Optimal Chain Cover
+						
+						1. min-flow approach
+						2. bipartite matching
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Min-flow approach
+						
+						- For every node $v\_i$ ∈ $G$, it adds two nodes, $y\_i$ and $y\_i$ , in $H$ and a directed edge
+						($x\_i$,$y\_i$) in $H$. In other words, <font color="#008ACD">a node in $G$ is represented as an edge in $H$</font>. For
+						<font color="#008ACD">each edge ($v\_i$,$v\_j$) in $G$, it adds an edge ($y\_i$,$x\_j$) in $H$</font>. A <font color="#008ACD">source node</font> is added
+						into $H$ that links to every node with in-degree 0 in $H$, and a <font color="#008ACD">sink node</font> is added
+						that is linked by every node with out-degree 0 in $H$.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Min-flow approach
+						
+						![](https://i.imgur.com/7mJX33Q.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Bipartite Matching
+						
+						- All nodes in the DAG $G$ are decomposed into several <font color="#008ACD">layers</font>,
+						$V\_1$ ,$V\_2$,...,$V\_h$, where $h$ is the length of the longest path in $G$
+
+						- $M\_i$ is the maximum matching of the <font color="#008ACD">bipartite graph</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Bipartite Matching
+
+						- In each successive layers, it finds
+						the<font color="#008ACD"> maximum matching for the bipartite graph</font> induced by the nodes in the two
+						layers (line 1-4). For some unmatched node $v$, it <font color="#008ACD">adds a virtual node $v^{'}$</font> in the
+						top of the two successive layer, in order to be further matched by nodes in the
+						unseen upper layers (line 5-9). A potential edge ($u$,$v^{'}$) for some <font color="#008ACD">$u$ ∈ $V\_{i+2}$ is added</font>
+						, if and only if there is an edge from $u$ to a node $x$ ∈ $V_{i+1}$ and there
+						is an alternating path from $x$ to $v^{'}$
+					</textarea>
+				</section>
+				<section>
+					<h3>
+						Bipartite Matching
+					</h3>
+					<div class="container">
+						<div class="col-small">
+							<img src ="./images/origin.png">
+						</div>
+						<div class="col-large">
+							<img src ="./images/after.png" height="175px">
+						</div>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://i.imgur.com/6Bw9Oip.png)
+					</textarea>
+				</section>
 			</section>
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+						### Path-Tree Cover
+						
+						- The graph $G(V,E)$ is decomposed into a set of pairwise disjoint paths,
+						$P\_1$,$P\_2$, ... ,$P\_{k'}$. A path 
+						<br><font color="#008ACD">$P\_i$ = $v\_{i1}$ → $v\_{i2}$ → ... → $v\_{ik}$ </font>where $v\_{ij}$ → $v\_{ij+1}$
+						is an edge in $G$.
 
+						- A path cover consists of $k'$ paths such that the union of the nodes in all the paths 
+						is the entire set of nodes in $G$ and the intersection of two paths is empty.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Path-Tree Cover
+						- There may exist edges from some nodes in $P\_i$ to some nodes in $P\_j$ , 
+						denoted as $E\_{Pi}$ → $E\_{Pj}$ , which is a subset of the edges in $G$.
+						- Some edges in $E\_{Pi}$→$E\_{Pj}$ can be eliminated.
+						- Let $E'\_{Pi->Pj}$ be a subset of $E\_{Pi->Pj}$ after edge elimination.		
+						
+						![](https://i.imgur.com/IXpSF1e.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Path-Tree Cover
+			
+						- Jin et al. use a <font color="#008ACD">single weighted edge</font> from $P\_i$ to$P\_j$, in order to
+						represent <font color="#008ACD">how many nodes in $P\_i$ can reach a node in $P\_j$</font>. Based on the weighted
+						edges from $P\_i$ to $P\_j$, a weighted path-graph <font color="#008ACD">$G\_P$ $(V,E)$ </font>is constructed. Here,
+						<font color="#008ACD">$V$</font> is a set of nodes <font color="#008ACD">representing paths</font>,$P\_1$,$P\_2$, ... ,$P\_{k'}$ , computed in the path
+						cover, and <font color="#008ACD">$E$</font> is a set of <font color="#008ACD">edges ($P\_i$ ,$P\_j$) with a weight</font>, if $E'\_{Pi->Pj}$ &#8800; 0.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Path-Tree Cover
+			
+						- Based on the path-graph $G\_P$ $(V,E)$, Jin et al. constructs 
+						a spanning tree $T\_P$ $(V,E)$, called path-tree with two criteria : 
+							- cover as many edges in $G$ as possible
+							- reduce the size of a resulting path-tree cover as much as possible
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Path-Tree Cover
+			
+						- A path-tree cover code, ptcode($u$), is assigned to node $u$ ∈ $G$ based
+						on the path-tree $T\_P$ .
+						- <font color="#008ACD">ptcode($u$) = (($u\_{start}$,$u\_{end}$), ($u\_x$,$u\_y$))</font>
+						- The first pair is the interval [$u\_{start}$,$u\_{end}$], like SIT code
+						- The second pair ($u\_x$,$u\_y$) is used to record the position of the node $u$ in the
+						path $P\_i$
+						- A reachability query,$u$↝$v$ is true, if the predicate
+						$P\_{pt}$ (ptcode($u$),ptcode($v$)) is true, such as <br>
 
-			<!-- <section>
-				<div class="container">
-					<div class="col">
-						Column 1 Content
-						<br> Column 1 Content
-						<br> Column 1 Content
-						<br> Column 1 Content
-						<br> Column 1 Content
-					</div>
-					<div class="col">
-						Column 2 Content
-						<br> Column 2 Content
-						<br> Column 2 Content
-					</div>
-				</div>
-			</section> -->
+						<font color="#008ACD" size = "6px">[$v\_{start}$,$v\_{end}$] ⊂ [$u\_{start}$,$u\_{end}$] ∧ $u\_x$ < $v\_x$ ∧ $u\_y$ < $v\_y$</font> .
+					</textarea>
+				</section>
+			</section>
 		</div>
 	</div>
 
@@ -320,9 +460,6 @@
 	<script src="js/reveal.js"></script>
 
 	<script>
-		// More info about config & dependencies:
-		// - https://github.com/hakimel/reveal.js#configuration
-		// - https://github.com/hakimel/reveal.js#dependencies
 		Reveal.initialize({
 			mouseWheel: true,
 			slideNumber: true,

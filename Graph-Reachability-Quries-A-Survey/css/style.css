@@ -3,7 +3,15 @@
 }
 
 .col {
-    flex-basis: 50%;
+    flex-basis: 39%;
+}
+
+.col-small {
+    flex-basis: 59%;
+}
+
+.col-large {
+    flex-basis: 75%;
 }
 
 .title {
