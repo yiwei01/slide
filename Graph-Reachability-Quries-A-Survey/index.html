@@ -430,7 +430,7 @@
 					<textarea data-template>
 						### Path-Tree Cover
 			
-						- Based on the path-graph $G\_P$ $(V,E)$, Jin et al. constructs 
+						- Based on the path-graph $G\_P$ $(V,E)$, Jin et al. construct 
 						a spanning tree $T\_P$ $(V,E)$, called path-tree with two criteria : 
 							- cover as many edges in $G$ as possible
 							- reduce the size of a resulting path-tree cover as much as possible
@@ -453,6 +453,196 @@
 					</textarea>
 				</section>
 			</section>
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+						### 2-Hop Cover
+						- Consider a node $w$ in $G$ as a center. All the ancestors of $w$, denoted as $ancs(w)$,
+						can reach $w$, and $w$ can reach any of its descendants, denoted as $desc(w)$
+						- Let $A\_w$⊆$ancs(w)$∪{$w$} and $D\_w$⊆$desc(w)$∪{$w$}. A complete bipartite graph,
+						called a <font color="#008ACD">2-hop cluster</font>, is denoted<font color="#008ACD">$S$($A\_w$,$w$,$D\_w$)</font>, with the center$w$.
+						- A 2-hop cover is a set of 2-hop clusters that completely covers the edge transitive closure $TC(G)$
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### 2-Hop Cover
+	
+						- In a 2-hop cover,a node in $G$ is assigned to a <br >
+						2-hop code, <font color="#008ACD">2hopcode($u$) = ($L\_{in}$($u$),$L\_{out}$($u$))</font>
+
+						- A reachability query $u$ ↝ $v$ is true if and only if
+						$P\_{2hop}$(2hopcode($u$), 2hopcode($v$)) is true.
+						<font color="#008ACD" size = "6px">$P\_{2hop}$(2hopcode($u$), 2hopcode($v$)) = $L\_{out}$($u$) ∩ $L\_{in}$($v$) &#8800; ∅</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### 2-Hop Cover
+	
+						![](https://i.imgur.com/qomzwpd.png)
+
+						The computational cost is high
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Heuristic Ranking
+
+						- It maintains all pairs of ($w$,$d\_w$) in <font color="#008ACD">priority queue</font>. 
+						The first is with the max ratio $d\_w$ value. In every iteration, 
+						it picks the first ($w$,$d\_w$) and recomputes <font color="#008ACD" size = "6px">$d'\_w$ = ∣S($A\_w$,$w$,$D\_w$)∩$TC'$∣ / (∣$A\_w$∣+∣$D\_w$∣)</font>, 
+						<br>if $d\_w$>$d'\_w$ , the pair ($w$,$d'\_w$) is enqueued into the priority queue. 
+						It repeats until it picks a node $w$ such that $d\_w$ = $d'\_w$ . 
+						In practice, Schenkel et al. find that it only needs to repeat 2-3 times in every iteration on average.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Geometrical-Based Approach
+						![](https://i.imgur.com/1ghTWoh.png )
+						- <font size = "6px">Compute the tree cover codes for $G$↓($V$↓,$E$↓), 
+						and another corresponding graph $G$↑($V$↑,$E$↑)</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Geometrical-Based Approach
+						- <font size = "6px">$po$↓($w$) and $po$↑($w$) : postorder of $w$<br>
+						$I$↓($w$) and $I$↑($w$) : Intervals of $w$, in $G$↓,$G$↑.</font>						
+						![](https://i.imgur.com/HKkNMhi.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Geometrical-Based Approach
+						- Cheng et al. construct a 2- dimensional reachability map, 
+						a node $w$ is mapped onto the <br>($x\_w$,$y\_w$) position in the reachability map 
+						as <br>($po$↓($w$),$po$↑($w$)).
+						- If $u$ ↝ $v$ is true, then ($x\_v$,$y\_u$) = 1, 
+						otherwise <br>($x\_v$,$y\_u$) = 0.
+						
+						![](https://i.imgur.com/zYOX59V.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Graph Partitioning Approaches
+
+						- A Flat Partitioning Approach
+						- A Hierarchical Partitioning Approach
+
+						![](https://i.imgur.com/HMmsnN1.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Flat Partitioning Approach
+						- First, it<font color="#008ACD"> partitions</font> the graph $G$ into $k$ subgraphs $G\_1$,$G\_2$,...,$G\_k$ 
+						depending on the available memory.
+						- Second, it <font color="#008ACD">computes the edge transitive closure and the 2-hop cover</font> for
+						each subgraph $G\_i$, <br>for 1 ≤ i ≤ k, using 2Hop-Cover Algorithm with the 
+						heuristic ranking discussed in the previous subsection.
+						- Third, it <font color="#008ACD">merges</font> the k 2-hop covers
+						computed for the $k$ subgraphs,$G\_1$,$G\_2$,...,$G\_k$, by dealing with the edges that
+						cross subgraphs. (<font color="#008ACD">cover joining</font> step)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Flat Partitioning Approach
+						- Let ($u$,$v$) be a <font color="#008ACD">cross-partition edge</font> where 
+						<br>$u$ ∈ $G\_i$ and $v$ ∈ $G\_j$ and $G\_i$ &#8800; $G\_j$ . 
+						Schenkel et al. compute the 2-hop cover for $G$ by encoding all reachability via ($u$,$v$) 
+						according to the following two operations.
+
+						- <font color="#008ACD">For all $a$ ∈ $ancs(u)$, $L\_{out}$($a$)←$L\_{out}$($a$)∪{$u$}</font>
+						- <font color="#008ACD">For all $d$ ∈ $desc(v)$ ∪ {$v$}, $L\_{in}$($d$)←$L\_{in}$($d$)∪{$u$}</font>
+					</textarea>
+				</section>
+				<section>
+					<h3>
+						A Flat Partitioning Approach
+					</h3>
+					<div class = "left-align">
+						The cover joining becomes the bottleneck of the whole processing. Schenkel et al. 
+						propose an effective and efficient approach for the third step of cover joining, 
+						using a <font color="#008ACD">skeleton graph (SG)</font>.
+					</div>
+					<div class="container">
+						<div class="col-small">
+							<img src ="./images/before-2hop.png">
+						</div>
+						<div class="col-large">
+							<img src ="./images/after-2hop.png" height="195px">
+						</div>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A skeleton graph
+						- 
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Hierarchical Partitioning Approach
+						- <font size="6px">The flat partitioning may result a partitioning
+						that result in many unbalanced 2-hop clusters $S$($A\_w$,$w$,$D\_w$)</font>
+
+						- <font size="6px">Cheng et al. show that the compression rate <br>
+						(∣$A\_w$∣⋅∣$D\_w$∣−1)/(∣$A\_w$∣+∣$D\_w$∣) is maximum when <br>
+						<font color="#008ACD">∣$A\_w$∣ = ∣$D\_w$∣</font>.</font>
+
+						![](https://i.imgur.com/Podz1nT.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Hierarchical Partitioning Approach
+						- Partition a large graph G into two subgraphs, $G\_A$ and $G\_D$ , 
+						<font color="#008ACD">repeatedly in a top-down fashion</font>. It repeats if a subgraph cannot be held 
+						in memory in such a manner
+
+						- The key idea presented is to <font color="#008ACD">select a set of centers</font>, $V\_w$ =
+						{$w\_1$,$w\_2$,...}, as a cut to partition a graph $G$. Note that <font color="#008ACD">the set of centers
+						implies a set of 2-hop clusters</font>, $S$($A\_{w1}$,$w\_1$,$D\_{w1}$), <br>
+						$S$($A\_{w2}$,$w\_2$,$D\_{w2}$),...
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Hierarchical Partitioning Approach
+						- Suppose that $G$ is partitioned into $G\_A$ and $G\_D$ . There exist a set of edges ($u$,$v$)
+						where $u$∈$G\_A$ and $v$∈$G\_D$ . Let $E\_C$ denote such a set of edges.
+
+						![](https://i.imgur.com/S1wUYqZ.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Hierarchical Partitioning Approach
+
+						- Node-oriented : Select a set of nodes in$E\_C$ as $V\_w$
+
+						- Edge-oriented : Treat edges as virtual nodes and identify $V\_w$
+
+						- The set of $V\_w$ is computed as to find the minimum 2-hop cover to cover 
+						reachability cross $G\_A$ and $G\_D$ from the nodes appearing in $E\_C$
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A Hierarchical Partitioning Approach
+						- <font size="6px">Based on $V\_w$ , Cheng et al. extract an induced subgraph
+						of <br><font color="orange">$G\_A$</font> , denoted <font color="orange">$G$&#8868;</font> , which does not include any nodes in $V\_w$ , and extract an
+						induced subgraph of <font color="#008ACD">$G\_D$</font> , denoted <font color="#008ACD">$G$&#8869;</font> , which does not include any nodes in
+						$V\_w$ . Both $G$&#8868; and $G$&#8869; are treated as G in the next steps to bisect.</font>
+						
+						![](https://i.imgur.com/HMmsnN1.png)
+					</textarea>
+				</section>
+			</section>	
 		</div>
 	</div>
 
