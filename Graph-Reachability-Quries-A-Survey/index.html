@@ -789,6 +789,54 @@
 					</textarea>
 				</section>
 			</section>	
+			<section>	
+				<section data-markdown>
+					<textarea data-template>
+						### Distance-Aware 2-Hop Cover 
+
+						- <font size = "6px">A distance query $u$ ↝δ $v$ is a reachability query $u$ ↝ $v$ with the shortest distance δ.</font>
+					
+						- <font size = "6px">$w(u,v)$ represents the distance over the edge $(u,v)$ ∈ $E$.</font>
+
+						- <font size = "6px">$L\_{in}$($u$) is a set of pairs {($u\_1$,δ($u\_1$,$u$)), ($u\_2$,δ($u\_2$,$u$)),...}.</font>
+
+						- <font size = "6px">$L\_{out}$($u$) is a set of pairs {($v\_1$,δ($u$,$v\_1$)), ($v\_2$,δ($u$,$v\_2$)),...}.</font>
+					
+						- <font size = "6px">A distance query $u$ ↝δ $v$ is answered as<br>
+						<font color="#008ACD" size = "5px">$min${δ$(u,w)$ + δ$(w,v)$∣($w$,δ$(u, w)$) ∈ $L\_{out}$($u$) ∧ ($w$,δ$(w,v)$) ∈ $L\_{in}$($v$)}</font></font>					
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Distance-Aware 2-Hop Cover 
+
+						- <font size = "6px">Issue-1: It cannot represent
+						a strongly connected component (SCC) in $G$ as representative node in
+						$G'$ . It is because that <font color="#008ACD">a node $w$ in a SCC on the shortest path from $u$ to $v$
+						does not necessarily mean that every node in the SCC is on the shortest
+						path from $u$ to $v$</font>.</font>
+
+						- <font size = "6px">Sol : collapse
+						every SCC into DAG by removing a small number of nodes from the SCC
+						repeatedly until it obtains a DAG graph.</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Distance-Aware 2-Hop Cover 
+					
+						- <font size = "6px">Issue-2: The cost of <font color="#008ACD">dynamically selecting the best 2-hop cluster</font>, in an
+						iteration of the 2-hop cover program, <font color="#008ACD">cannot be reduced using the tree
+						cover codes</font>, because such techniques
+						cannot handle distance information.</font>
+
+
+						- <font size = "6px">Sol : Reduce the 2-hop
+						clusters by taking the already identified 2-hop clusters into consideration, to
+						avoid storing unnecessary all-pairs of shortest paths.</font>
+					</textarea>
+				</section>
+			</section>	
 		</div>
 	</div>
 
