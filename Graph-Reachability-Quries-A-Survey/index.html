@@ -43,7 +43,7 @@
 					### Outline
 
 					- Introduction
-					<br> 1. Tree + SSPI
+					<br> <font size = "6px">1. Tree + SSPI
 					<br> 2. GRIPP
 					<br> 3. Dual-Labeling
 					<br> 4. Tree Cover
@@ -52,7 +52,7 @@
 					<br> 7. 2-Hop Cover
 					<br> 8. 3-Hop Cover
 					<br> 9. Distance-Aware 2-Hop Cover
-					<br> 10. Graph Pattern Matching
+					<br> 10. Graph Pattern Matching</font>
 				</textarea>
 			</section>
 			<section>
@@ -77,7 +77,9 @@
 					<textarea data-template>
 						### Reachability Queries
 						- Let ${G}$ = (${V}$, ${E}$) be a large directed graph that has n nodes and m edges. A reachability queries is denoted as ${u}$ ↝ ${v}$, where
-						${u}$ and ${v}$ are two nodes in ${G}$. Here, <font color="#008ACD">${u}$ ↝ ${v}$ returns true if and only if there is a directed path in the directed graph
+						${u}$ and ${v}$ are two nodes in ${G}$. 
+						
+						- Here, <font color="#008ACD">${u}$ ↝ ${v}$ returns true if and only if there is a directed path in the directed graph
 							${G}$ from ${u}$ to ${v}$.</font>
 					</textarea>
 				</section>
@@ -161,7 +163,7 @@
 				<section data-markdown>
 					<textarea data-template>
 						### GRIPP
-						- a node in ${G}$ is assigned with <font color="#008ACD">one or more than one SIT codes</font> depending on the number of incoming edges to the node.
+						- A node in ${G}$ is assigned with <font color="#008ACD">one or more than one SIT codes</font> depending on the number of incoming edges to the node.
 						
 						- The type in the GRIPP index table indicates the type of the incoming edge based on which the node is assigned a SIT code.
 					</textarea>
@@ -177,7 +179,7 @@
 				<section data-markdown>
 					<textarea data-template>
 						### GRIPP
-						- we identify all <font color="#008ACD">hop nodes</font> and <font color="#008ACD">recursively check their reachable instance sets</font> 
+						- Identify all <font color="#008ACD">hop nodes</font> and <font color="#008ACD">recursively check their reachable instance sets</font> 
 						by performing a DFS over $O(G)$ (order tree) using hop nodes in ascending order of their preorder values.
 						
 						![](https://i.imgur.com/abBOBXi.png)						
@@ -227,10 +229,13 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Dual-labeling
-						- The proposed $TLC$ function $N(x,y)$ computes the number of links $i$ → [$j$,$k$) in the
-						transitive link table that satisfy $i$ ≥ $x$ and $y$ ∈ [$j$,$k$)
-						- The following predicate $P\_{dg}$(, ) is defined over the graph via possible non-tree edges.
+						- <font size = "6px">The proposed $TLC$ function $N(x,y)$ computes the number of links $i$ → [$j$,$k$) in the
+						transitive link table that satisfy $i$ ≥ $x$ and $y$ ∈ [$j$,$k$)</font>
+						
+						- <font size = "6px">The following predicate $P\_{dg}$(, ) is defined over the graph via possible non-tree edges.</font>
+						
 						- <font color="#008ACD" size = "6px">$P\_{dg}$(dtcode($u$),dtcode($v$)) =$N$($u\_{start}$,$v\_{start}$)−$N$($u\_{end}$,$v\_{start}$) > 0</font>
+						
 						- <font size = "6px">$u$ ↝ $v$ is true over the possible non-tree edges if and only if the predicate $P\_{dg}$(dtcode($u$), dtcode($v$)) is true</font>
 					</textarea>
 				</section>
@@ -251,6 +256,7 @@
 						- The code for a node $u$ in $G$, denoted as <br>
 						<font color="#008ACD" size = "6px">tccode($u$) = {[$u\_{start1}$,$u\_{end1}$], [$u\_{start2}$,$u\_{end1}$],...}</font>,
 						where $u\_{end1}$ is the postorder when it traverses the spanning tree.
+						
 						- Given the tree cover codes, $u$ ↝ $v$ is true if and only if
 						the postorder of $v$($v\_{end1}$) is in an interval of the node $u$.
 						The predicate $P\_{tc}$(, ) is given below.<br>
@@ -260,9 +266,16 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Tree Cover
-						- The total number of intervals for all codes in $G$ becomes a factor to measure the quality of the tree cover.
+						
+						- The <font color="#008ACD">total number of intervals</font> for all codes in $G$ <font color="#008ACD">becomes a factor</font> to measure the quality of the tree cover.
 						The total number varies depending on the selection of a spanning tree,
 						known as tree cover, over the graph $G$.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Tree Cover
+						
 						- In order to achieve the optimal tree cover, for a node $v$,
 						it <font color="#008ACD">retains</font> the edge from the immediate predecessor of $v$ with the <font color="#008ACD">maximum number of predecessors</font>
 						 in the original DAG $G$, and <font color="#ff5151">delete</font> the edges from the other <font color="#ff5151">immediate predecessors</font> of $v$.
@@ -275,9 +288,9 @@
 						### Chain Cover
 						- A chain cover of $G$ is a set of <font color="#008ACD">pairwise disjoint chains</font>, $C\_1$,$C\_2$,...,$C\_k$<br>
 						Here, a chain <font color="#008ACD">$C\_i$ =$v\_{i1}$ ↝$v\_{i2}$↝...↝$v\_{ik}$</font> where $v\_{ij}$ is a node in$G$ and $v\_{ij+1}$ is reachable from $v\_{ij}$ in$G$.			
+						
 						- The optimal chain cover of $G$ is a chain cover of $G$ that
 						contains the <font color="#008ACD">least number of chains</font> among all possible chain covers of $G$.
-
 						
 					</textarea>
 				</section>
@@ -286,7 +299,9 @@
 						### Chain Cover
 						- Each node $v\_i$ ∈ $G$ is assigned a code, denote chaincode($v\_i$), which
 						is a list of pairs,<br>
-						<font color="#008ACD">{(1,$p\_{i,1}$), (2,$p\_{i,2}$), ⋅ ⋅ ⋅ , (k,$p\_{i,k}$)}</font>. Each pair (j,$p\_{i,j}$) means
+						<font color="#008ACD">{(1,$p\_{i,1}$), (2,$p\_{i,2}$), ⋅ ⋅ ⋅ , (k,$p\_{i,k}$)}</font>. 
+						
+						- Each pair (j,$p\_{i,j}$) means
 						that the node $v\_i$ can reach any nodes from the position $p\_{i,j}$ in the j-th chain. If
 						$v\_i$ cannot reach any node in the j-th chain, then $p\_{i,j}$ = +∞.
 					</textarea>
@@ -308,9 +323,13 @@
 					<textarea data-template>
 						### Chain Cover
 						
-						- The algorithm shows how to compute chaincode($v\_i$) for every $v\_i$ ∈ $G$. It visits every node in $G$ <font color="#008ACD">in the reverse of topological order</font> (line 3).
-						For each node visited, its chaincode($v\_i$) is updated using its immediate successors if the corresponding position in the $l$-th chain, $C\_l$ ,
-						of an immediate successor is smaller than the current position $v\_i$ has in $C\_l$.	
+						- <font size = "6px">
+						The algorithm shows how to compute chaincode($v\_i$) for every $v\_i$ ∈ $G$.							
+							<br>1. It visits every node in $G$ <font color="#008ACD">in the reverse of topological order</font> (line 3)
+						
+							<br>2. For each node visited, its chaincode($v\_i$) is updated using its immediate successors if the corresponding position in the $l$-th chain, $C\_l$ ,
+							of an immediate successor is smaller than the current position $v\_i$ has in $C\_l$</font>
+						
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -334,11 +353,17 @@
 					<textarea data-template>
 						### Min-flow approach
 						
-						- For every node $v\_i$ ∈ $G$, it adds two nodes, $y\_i$ and $y\_i$ , in $H$ and a directed edge
-						($x\_i$,$y\_i$) in $H$. In other words, <font color="#008ACD">a node in $G$ is represented as an edge in $H$</font>. For
-						<font color="#008ACD">each edge ($v\_i$,$v\_j$) in $G$, it adds an edge ($y\_i$,$x\_j$) in $H$</font>. A <font color="#008ACD">source node</font> is added
+						- <font size="6px">For every node $v\_i$ ∈ $G$, it adds two nodes, $y\_i$ and $y\_i$ , in $H$ and a directed edge
+						($x\_i$,$y\_i$) in $H$.</font>
+						
+						- <font size="6px">In other words, <font color="#008ACD">a node in $G$ is represented as an edge in $H$</font>.</font>
+						
+						- <font size="6px">For <font color="#008ACD">each edge ($v\_i$,$v\_j$) in $G$, it adds an edge ($y\_i$,$x\_j$) in $H$</font>.</font>
+						
+						- <font size="6px">A <font color="#008ACD">source node</font> is added
 						into $H$ that links to every node with in-degree 0 in $H$, and a <font color="#008ACD">sink node</font> is added
 						that is linked by every node with out-degree 0 in $H$.
+						</font></font>
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -362,13 +387,17 @@
 					<textarea data-template>
 						### Bipartite Matching
 
-						- In each successive layers, it finds
+						1. <font size = "6px">In each successive layers, it finds
 						the<font color="#008ACD"> maximum matching for the bipartite graph</font> induced by the nodes in the two
-						layers (line 1-4). For some unmatched node $v$, it <font color="#008ACD">adds a virtual node $v^{'}$</font> in the
+						layers (line 1-4). </font>
+
+						2. <font size = "6px">For some unmatched node $v$, it <font color="#008ACD">adds a virtual node $v^{'}$</font> in the
 						top of the two successive layer, in order to be further matched by nodes in the
-						unseen upper layers (line 5-9). A potential edge ($u$,$v^{'}$) for some <font color="#008ACD">$u$ ∈ $V\_{i+2}$ is added</font>
+						unseen upper layers (line 5-9). </font>
+
+						3. <font size = "6px">A potential edge ($u$,$v^{'}$) for some <font color="#008ACD">$u$ ∈ $V\_{i+2}$ is added</font>
 						, if and only if there is an edge from $u$ to a node $x$ ∈ $V_{i+1}$ and there
-						is an alternating path from $x$ to $v^{'}$
+						is an alternating path from $x$ to $v^{'}$</font>
 					</textarea>
 				</section>
 				<section>
@@ -420,7 +449,9 @@
 						### Path-Tree Cover
 			
 						- Jin et al. use a <font color="#008ACD">single weighted edge</font> from $P\_i$ to$P\_j$, in order to
-						represent <font color="#008ACD">how many nodes in $P\_i$ can reach a node in $P\_j$</font>. Based on the weighted
+						represent <font color="#008ACD">how many nodes in $P\_i$ can reach a node in $P\_j$</font>. 
+						
+						- Based on the weighted
 						edges from $P\_i$ to $P\_j$, a weighted path-graph <font color="#008ACD">$G\_P$ $(V,E)$ </font>is constructed. Here,
 						<font color="#008ACD">$V$</font> is a set of nodes <font color="#008ACD">representing paths</font>,$P\_1$,$P\_2$, ... ,$P\_{k'}$ , computed in the path
 						cover, and <font color="#008ACD">$E$</font> is a set of <font color="#008ACD">edges ($P\_i$ ,$P\_j$) with a weight</font>, if $E'\_{Pi->Pj}$ &#8800; 0.
@@ -489,12 +520,17 @@
 					<textarea data-template>
 						### A Heuristic Ranking
 
-						- It maintains all pairs of ($w$,$d\_w$) in <font color="#008ACD">priority queue</font>. 
-						The first is with the max ratio $d\_w$ value. In every iteration, 
+						1. <font size = "6px">It maintains all pairs of ($w$,$d\_w$) in <font color="#008ACD">priority queue</font>. 
+						The first is with the max ratio $d\_w$ value. </font>
+						
+						2. <font size = "6px">In every iteration, 
 						it picks the first ($w$,$d\_w$) and recomputes <font color="#008ACD" size = "6px">$d'\_w$ = ∣S($A\_w$,$w$,$D\_w$)∩$TC'$∣ / (∣$A\_w$∣+∣$D\_w$∣)</font>, 
-						<br>if $d\_w$>$d'\_w$ , the pair ($w$,$d'\_w$) is enqueued into the priority queue. 
-						It repeats until it picks a node $w$ such that $d\_w$ = $d'\_w$ . 
-						In practice, Schenkel et al. find that it only needs to repeat 2-3 times in every iteration on average.
+						<br>if $d\_w$>$d'\_w$ , the pair ($w$,$d'\_w$) is enqueued into the priority queue. </font>
+						
+						3. <font size = "6px">It repeats until it picks a node $w$ such that $d\_w$ = $d'\_w$ . </font>
+						
+						4. <font size = "6px">In practice, Schenkel et al. find that it only needs to repeat <br>
+						2-3 times in every iteration on average.</font>
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -640,6 +676,116 @@
 						$V\_w$ . Both $G$&#8868; and $G$&#8869; are treated as G in the next steps to bisect.</font>
 						
 						![](https://i.imgur.com/HMmsnN1.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### A 2-Hop Cover Maintainance 
+						- Avoid computing a 2-hop cover from the beginning. 
+						There are four operations, insertion/deletion of nodes/edges
+						- <font size="6px">A simple solution is to insert $S$($ancs(v)$,$v$,$desc(v)$) into the 2-hop cover, i.e., inserting
+						$v$ to the $L\_{in}$ and $L\_{out}$ of all nodes in $desc(v)$ and $ancs(v)$, respectively</font>
+
+						- <font color="#008ACD">Re-labeling a subgraph</font>
+
+						- <font color="#008ACD">Reserving all alternative paths</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Re-labeling a subgraph 
+
+						- <font size="6px">When there is a deletion of an existing node,
+						Schenkel et al. compute a 2-hop cover $\hat{L}$ of a subgraph <font color="#008ACD">$G_\{rel}$</font> of $G$,
+						in order to reflect all <font color="#008ACD">the affected connections in $G$</font>.</font>
+						- <font size="6px">First, it includes all nodes in $ancs(v)$ in $V_\{rel}$.</font>
+						
+						- <font size="6px">Second, it includes all nodes in $desc(u)$ into $V_\{rel}$ if $u$ ∈ $ancs(v)$. </font>
+						
+						- <font size="6px">Note that $G\_{rel}$ represents all the affected connections.</font>
+					</textarea>
+				</section>
+				<section>
+					<h3>
+						Re-labeling a subgraph
+					</h3>
+					<div>
+						<img src ="./images/relabel.png" height="500px">
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Re-labeling a subgraph 
+
+						- This approach is high maintenance cost, because $G\_{rel}$ can
+						be as large as $G$ itself.
+						
+						- It means that the maintenance for the current 2-hop
+						cover degrades into the re-computation of a new 2-hop cover for the entire graph.
+					</textarea>
+				</section>
+				<section>
+					<h3>
+						Reserving all alternative paths
+					</h3>
+					<div>
+						<img src ="./images/alternative-path.png" height="500px">
+					</div>
+				</section>
+			</section>
+			<section>	
+				<section data-markdown>
+					<textarea data-template>
+						### 3-Hop Cover 
+
+						- Suppose there exists a <font color="#008ACD">chain cover</font> of $G$ with
+						$k$ chains. Jin et al. show that the transitive closure matrix for $G$ is a matrix of
+						$k$ × $k$ blocks where each block is a Pseudo-upper triangular matrix.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### 3-Hop Cover 
+						![](https://i.imgur.com/5I9cu7V.png)
+						<font size = "6px">(Transitive Closure)</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### 3-Hop Cover 
+
+						- Difference between 2-hop and 3-hop:
+
+						- In a 2-hop cover code, $u$ can reach $v$ if any only if $L\_{out}$($u$) ∩ $L\_{in}$($v$) &#8800; ∅.
+						
+						- But in a 3-hopcover code, it allows a point in $L\_{out}$($u$) reach 
+						another point in $L\_{in}$($v$) via a chain.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### 3-Hop Cover 
+						- <font size = "6px">Suppose that there is a chain ... ↝ $v\_i$ ↝ ... ↝ $v\_j$ ↝ ... . Then,</font> 	
+						
+
+						1. <font size = "6px">$u$ ↝ $v$ is true if $u$ can reach $v\_i$ (1st hop)</font>
+						2. <font size = "6px">$v\_i$ can reach $v\_j$ (2nd hop)</font>
+						3. <font size = "6px">$v\_j$ can reach $v$ (3rd hop)</font>
+
+
+						![](https://i.imgur.com/DHlIX8N.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### 3-Hop Cover 
+
+						1. First step, Collect a set of entry points $L\_{out}$($u$) can reach on the intermediate chains.
+						
+						2. Second step, Collect a set of exit points which can reach $v$ on the intermediate chains.
+						
+						3. Finally, Check whether an entry point can reach an exit point using the chain
+						ids and positions for nodes in the chain.
 					</textarea>
 				</section>
 			</section>	
