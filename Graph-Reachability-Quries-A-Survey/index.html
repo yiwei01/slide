@@ -836,7 +836,123 @@
 						avoid storing unnecessary all-pairs of shortest paths.</font>
 					</textarea>
 				</section>
-			</section>	
+			</section>
+			<section>
+				<section data-markdown>
+					<textarea data-template>
+						### Graph Pattern Matching 
+					
+						- A data graph is a directed <font color="#008ACD">node-labeled graph</font>$G\_D$ = ($V$,$E$, Σ, φ)
+						
+						- <font size = "6px">Σ : a set of node label</font>
+						
+						- <font size = "6px">φ : a mapping function which assigns each node, $v\_i$ ∈ $V$ , a label $l\_j$ ∈ Σ.</font>
+					
+						- <font size = "6px">The extent of $l$, denoted ext($l$), is a set of nodes in $G\_D$ whose label is $l$</font>
+					</textarea>						
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Graph Pattern Matching 
+					
+						- A graph pattern is a connected directed labeled graph $G\_q$ = ($V\_q$,$E\_q$)
+						
+						- <font size = "6px">$V\_q$ is a subset of labels (Σ)</font>
+						
+						- <font size = "6px">$E\_q$ is a set of edges (ordered pairs) between two nodes in $V\_q$</font>
+
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Graph Pattern Matching 
+						
+						![](https://i.imgur.com/dkXCb2x.png)
+
+						- ext(A) = { a, b, c }
+						- ext(D) = { e, f }						
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Graph Pattern Matching 
+						
+						- Let $A$,$D$ ∈ $V\_q$ . An edge $(A,D)$ ∈ $E$($G\_q$), there are two conditions
+							1. parent/child condition, denoted as A |→ D
+							2. reachability condition, denoted as A ~→ D
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Graph Pattern Matching
+
+						- A Special Case: A~→D 
+							
+							- Sort-Merge Join
+
+							- Hash Join
+							
+							- Join Index
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Sort-Merge Join
+						
+						- Wang et al. also propose a hash join algorithm to process
+						A~→D over a directed graph using the <font color="#008ACD">tree cover codes</font>.
+
+						- <font size = "6px">$Alist$ and $Dlist$ be two lists of ext($A$) and ext($D$), respectively.</font>
+						
+						- <font size = "6px">In $Alist$, every node$v\_i$ keeps all its <font color="#008ACD">intervals</font> in tccode$(v\_i)$.</font>
+						
+						- <font size = "6px">In $Dlist$, every node$v\_j$ keeps its unique <font color="#008ACD">postorder</font> $post(v)$.</font>
+
+						- <font size = "6px">The sort-merge join algorithm evaluates A~→D over $G\_D$ by a single scan on $Alist$ and $Dlist$
+						using the predicate <font color="#008ACD">$P\_{tc}$(, )</font>.</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						- Hash Join		
+							- $Alist$ is a list of pairs ($val(u)$,$post(u)$) for all $u$ ∈ $ext$($A$).
+								- $val(u)$ is either a start or an end of the intervals
+							- $Dlist$ keeps a list of postorders $post(v)$ for all $v$ ∈ $ext(D)$
+
+						- Join index
+							- The join index is built based on the 2-hop cover codes
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### The General Cases		
+						
+						- A query graph, $G\_q$ , is restricted to be a tree
+						- <font size = "6px">Chen et al. in [8] use $TwigStackD$ algorithm process a tree-shaped $G\_q$</font>
+						- <font size = "6px">Chen et al. in [11,12] consider A~→D as a R-join (like θ-join), and process
+						a graph pattern matching as a sequence of R-joins</font>
+						- <font size = "6px">Wang et al. in [35] propose a query graph $G\_q$ based on the hash join
+						approach, and consider how to share the processing cost when it needs to
+						process several Alist and Dlist simultaneously.</font>
+					</textarea>
+				</section>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Review
+
+					1. <font size = "6px">Tree + SSPI</font>
+					2. <font size = "6px">GRIPP</font>
+					3. <font size = "6px">Dual-Labeling</font>
+					4. <font size = "6px">Tree Cover</font>
+					5. <font size = "6px">Chain Cover</font>
+					6. <font size = "6px">Path-Tree Cover</font>
+					7. <font size = "6px">2-Hop Cover</font>
+					8. <font size = "6px">3-Hop Cover</font>
+					9. <font size = "6px">Distance-Aware 2-Hop Cover</font>
+					10. <font size = "6px">Graph Pattern Matching</font>
+				</textarea>
+			</section>
 		</div>
 	</div>
 
