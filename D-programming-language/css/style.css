@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+}
+
+.col {
+    flex-basis: 39%;
+}
+
+.col-small {
+    flex-basis: 59%;
+}
+
+.col-large {
+    flex-basis: 75%;
+}
+
+.title {
+    flex-basis: 100%;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.reveal section .small {
+    font-size: 0.6em;
+    line-height: 1.5em;
+}
+
+.reveal section {
+    word-spacing: 6px;
+}
