@@ -6,15 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="shortcut icon" href="./images/favicon.ico" type="./images/favicon.ico" />
 	<link rel="icon" href="./images/favicon.ico" type="./images/favicon.ico" />
-	<title>Graph reachability quries : a survey</title>
+	<title>D programming language</title>
 
 	<link rel="stylesheet" href="../css/reveal.css">
-	<link rel="stylesheet" href="../css/theme/solarized.css" id="theme">
+	<link rel="stylesheet" href="../css/theme/league.css" id="theme">
 	<link rel="stylesheet" href="./css/style.css">
-
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="../lib/css/zenburn.css">
-
 	<!-- Printing and PDF exports -->
 	<script>
 		var link = document.createElement('link');
@@ -34,8 +32,8 @@
 				</h2>
 
 				<div class="right-align">
-					<br>Student : Bo-Yu,Lai Dian-Shan,Chen
-					<br>   Shih-Yu,Teng Yi-Wei,Wang
+					<br>Presenter : 鄧仕榆、賴柏瑜
+					<br>王議偉、陳殿善
 				</div>
 			</section>
 			<section data-markdown>
@@ -53,27 +51,290 @@
 			</section>
 			<section>
 				<section>
-					<div>
-						<h3>
-							介紹
-						</h3>
-					</div>
-					<div>
-						
+					<div class = "container">
+						<div class = "msg-small">
+							<img src ="./images/WB.jpg">
+						</div>
+						<div id = "author-intro" class ="half">
+							<ul>
+								<li>著名程式設計師</li>
+								<li>創立D語言建立D語言規範</li>
+								<li>實做第一個D語言編譯器</li>
+								<li>編譯專家，開發許多C++編譯器</li>
+							</ul>
+						</div>
 					</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### 介紹的第二頁
-					
-
+						# Why D?
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### 介紹的第三頁
+						## Let’s look at existing language …
 
+						- Modeling Power?
+
+						- Obsolete Technology?
+
+						- Waiting?
 						
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						Solutions exist in other languages, 
+						but are not combined.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## All in One Language
+
+						1. Modeling Power
+
+						2. Modern Convenience
+
+						3. Native Efficiency
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Why D ?
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## 1. Modeling Power?
+
+						![](https://i.imgur.com/oQ0bvIp.jpg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Great for Brick Like Models
+
+						![](https://i.imgur.com/ntxPNoS.jpg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Airplane?
+
+						![](https://i.imgur.com/yT5cngo.jpg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://i.imgur.com/UWdfoLe.jpg =600x400)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Multiple Modeling Paradigm
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Polymorphism
+
+						``` 
+						interface Shape{
+						    void Draw();
+						}
+
+						class Square:Shape{
+						    this(int xpos, int ypos, int width){
+						        x = xpos; y = ypos;
+						        w = width;
+						    }
+						    void Draw(){
+						        writefln("Drawing Square at (%s,%s), width %s\n", x, y, width);
+						    }
+						    private int x, y, width;
+						}
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Functional
+
+						- Data immutability
+						```
+						immutable int[]a = {1,2,4,6}
+						```
+						- Pure functions
+						```
+						pure int square(int x){return x*x;}             
+						```
+						- Lambda functions
+						```
+						a.sort((x,y) => x < y)
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Generics
+
+						- Template Example
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Generative
+						```
+						struct A{
+							int a;
+							mixin(bitfields!(
+								unit, "x", 2,
+								int, "y", 3,
+								uint, "z", 2,
+								bool, "flag", 1));
+						}
+
+						A obj;
+						obj.x = 2;
+						obj.z = obj.x;
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Contract
+						
+						```
+						in
+						{
+						    ... contract preconditions ...
+						}
+						out (result)
+						{
+						    ... contract postconditions ...
+						}
+						do
+						{
+						    ... code ...
+						}
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Why D?
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# 2. Obsolete Technology?
+
+						![](https://i.imgur.com/SoRkKHf.jpg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://i.imgur.com/RE0Pi0T.jpg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://i.imgur.com/8WRQDXM.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Modern Convenience
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Associative Arrays
+						```
+						int[string] aa = ["hello":3, "world":4];
+
+						aa["hello"] = 5;  // set value associated with key "hello" to 5
+						int value = aa["hello"];  // lookup value from a key
+						assert(value == 5);
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Static Typing With Inference
+						```cpp
+						void main(){
+							// type:double[]
+							auto arr = [1, 2, 3.14, 5.1, 6];
+							// type:int[string]
+							auto dictionary = ["one": 1, "two": 2, "three": 3];
+							
+							auto x = min(arr[0], dictionary["two"]);
+						}
+						
+						auto min(T1, T2)(T1 lhs, T2 rhs){
+							return rhs < lhs ? rhs : lhs;
+						}
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Resource Management
+						```cpp
+						import std.stdio, core.stdc.stdlib
+						class Widget{    }
+						
+						void main(){
+							auto w = new Widget;    //automatic
+							
+							//Code is executed in any case upon scope exit
+							scope(exit){ writeln("Exiting main"); }
+							
+							auto p = malloc(10);    //explicit C style
+							if(p)free(p);
+						}
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Slices
+						```cpp
+						auto filename = "etc/c/zip d"
+						auto path = filename[0..6];    //"etc/c/"
+						auto name = filename[6..9];    //"zip"
+						auto ext = filename[10..11];    //"d"
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Ranges
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Why D?
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## 3. Waiting?
+
+						Waiting for your prgram to load, to run …
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Native Efficiency
+
+						- Compiles to Native Code
+
+						- Direct Access to C
+						
+						- Inline Assembler
 					</textarea>
 				</section>
 			</section>
@@ -116,16 +377,363 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### 特徵的第二頁
-					
+						#### Thread Local Storage (TLS)
+						
+						```cpp
+						int temp = 0; // global variable
 
+						int main(string[] argv)
+						{
+						    spawn((){	// worker
+						        Thread.sleep(1.seconds);
+						
+						        temp = 2;
+						        while(true)
+						        {
+									writeln("in slave: temp = ",temp,", address = ",&temp); // worker's temp = 2
+						            Thread.sleep(1.seconds);
+						        }
+						    });
+						
+							// master
+						    temp = 1;
+						    while(true)
+						    {
+						        writeln("in master: temp = ",temp,", address = ",&temp); // master's temp = 1
+						        Thread.sleep(1.seconds);
+						    }
+						}
+						```
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### 特徵的第三頁
+						### Thread Local Storage (TLS)						
 
+						```
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						in sub thread : temp = 2, temp address is 7F7E4D68A580
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						in sub thread : temp = 2, temp address is 7F7E4D68A580
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						```
+					</textarea>
+				</section>
+				<section>
+					<div>
+						<h3>mutex</h3>
+					</div>		
+						<pre>
+							<code data-trim data-noescape>
+								mtx.lock_nothrow();
+
+								counter += 1;
+
+								mtx.unlock_nothrow();
+					
+							</code>
+						</pre>
+				</section>
+				<section>
+					<div>
+						<h4>MESSAGE PASSING IN C/C++</h4>
+					</div>
+					<div class = "container">
+						<div class = "half">
+							<pre>
+								<code data-trim data-noescape contenteditable="true">
+								int main(int argc , char *argv[]) //server
+								{
+									//socket的建立
+									char inputBuffer[256] = {};
+									char message[] = {"Hi,this is server.\n"};
+									int sockfd = 0,forClientSockfd = 0;
+									sockfd = socket(AF_INET , SOCK_STREAM , 0);
+								
+									if (sockfd == -1){
+										printf("Fail to create a socket.");
+									}
+								
+									//socket的連線
+									struct sockaddr_in serverInfo,clientInfo;
+									int addrlen = sizeof(clientInfo);
+									bzero(&serverInfo,sizeof(serverInfo));
+								
+									serverInfo.sin_family = PF_INET;
+									serverInfo.sin_addr.s_addr = INADDR_ANY;
+									serverInfo.sin_port = htons(8700);
+									bind(sockfd,(struct sockaddr *)&serverInfo,sizeof(serverInfo));
+									listen(sockfd,5);
+								
+									while(1){
+										forClientSockfd = accept(sockfd,(struct sockaddr*) &clientInfo, &addrlen);
+										send(forClientSockfd,message,sizeof(message),0);
+										recv(forClientSockfd,inputBuffer,sizeof(inputBuffer),0);
+										printf("Get:%s\n",inputBuffer);
+									}
+									return 0;
+								}
+								</code>
+							</pre>
+						</div>
+						<div class = "half">
+							<pre>
+								<code data-trim data-noescape contenteditable="true">
+								int main(int argc , char *argv[]) //client
+								{		
+									//socket的建立
+									int sockfd = 0;
+									sockfd = socket(<span class ="highlight">AF_INET</span> , SOCK_STREAM , 0);
+									
+									if (sockfd == -1){
+										printf("Fail to create a socket.");
+									}
+								
+									//socket的連線							
+									struct sockaddr_in info;
+									bzero(&info,sizeof(info));
+									info.sin_family = PF_INET;
+								
+									//localhost test
+									info.sin_addr.s_addr = inet_addr("127.0.0.1");
+									info.sin_port = htons(8700);
+															
+									int err = connect(sockfd,(struct sockaddr *)&info,sizeof(info));
+									if(err==-1){
+										printf("Connection error");
+									}						
+								
+									//Send a message to server
+									char message[] = {"Hi there"};
+									char receiveMessage[100] = {};
+									send(sockfd,message,sizeof(message),0);
+									recv(sockfd,receiveMessage,sizeof(receiveMessage),0);
+								
+									printf("%s",receiveMessage);
+									printf("close Socket\n");
+									close(sockfd);
+									return 0;
+								}
+								</code>
+							</pre>
+						</div>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### message passing in D
+
+						```cpp
+						void workerFunc(Tid tid) { 
+							int value = 0;  
+							while (value >= 0) { 
+								value = receiveOnly!int();
+								auto result = to!int(value) * 5;
+								tid.send(result);
+							}
+						} 
+						 
+						void main() { 
+							Tid worker = spawn(&workerFunc,thisTid); 
+							
+							foreach (value; 5 .. 10) {
+								worker.send(value);
+								auto result = receiveOnly!int();
+								writefln("main sent: %s, received: %s", value, result); // value = 5 ,result = 30 ...
+							}
+							
+							worker.send(-1); 
+						} 
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### message passing in D
+
+						```cpp
+						void worker(Tid parentId)
+						{
+						    bool canceled = false;
+						    writeln("Starting ", thisTid, "...");
 						
+						    while (!canceled) {
+						      receive(
+						        (NumberMessage m) {	//	input NumberMessage (struct)
+						          writeln("Received int: ", m.number);
+						        },
+						        (string text) {	//	input string
+						          writeln("Received string: ", text);
+						        },
+						        (CancelMessage m) {	//	input CancelMessage (struct)
+						          writeln("Stopping ", thisTid, "...");
+						          send(parentId, CancelAckMessage());
+						          canceled = true;
+						        }
+						      );
+						    }
+						}
+						```
+					</textarea>
+				</section>
+				<section>
+					<div>
+						<h4>MESSAGE PASSING  IN D</h4>
+					</div>
+					<div class = "container">
+						<div class = "msg-bigger">
+							<pre>
+								<code data-trim data-noescape>
+								void workerFunc(Tid tid)
+								{
+								   Thread.sleep(dur!("secs")( 5 ),);
+								   tid.send("hello");
+								}
+		
+								void main()
+								{
+									spawn(&workerFunc,thisTid);
+													
+									writeln("Waiting for a message");
+									bool received = false;		
+									while (!received)
+									{
+										received = receiveTimeout(dur!("secs")( 1 ),
+										(string message){
+											writeln("received: ", message);
+										});
+									
+										if (!received)	writeln("... no message yet");
+									}
+								}
+								</code>
+							</pre>
+						</div>
+						<div class = "msg-small">
+							<pre>
+								<code data-trim data-noescape>
+								Waiting for a message
+								... no message yet
+								... no message yet
+								... no message yet
+								... no message yet
+								received: hello
+								</code>
+							</pre>
+						</div>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Fiber
+
+						```cpp
+						import std.stdio;
+						import core.thread : Fiber;
+
+						void foo() {
+						    writeln("Hello");
+						    Fiber.yield();
+						    writeln("World");
+						}
+
+						int main(){
+							
+							auto f = new Fiber(&foo);
+							f.call(); // prints Hello
+						    f.call(); // prints World
+						
+						    return 0;
+						}
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### parallelism
+
+						```cpp
+						import std.stdio;
+						import core.thread;
+						import std.parallelism;
+						
+						struct Student {
+							int number;
+						
+							void sleepOperation() {
+								Thread.sleep(1.seconds);
+								writefln("The work on student %s has ended", number);
+							}
+						}
+
+						void main() {
+							auto students =
+								[ Student(1), Student(2), Student(3), Student(4) ];
+						
+							foreach (student; parallel(students)) {	//	parallelism
+								student.sleepOperation();
+							}
+						}
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### @safe
+
+						1. Casts that break the type system.
+
+						2. Modification of pointer values.
+
+						3. Taking the address of a local variable or function parameter.
+						
+						Other attributes : @trusted , @system ...			
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### @trusted
+
+						- Guaranteed by the programmer to not exhibit any undefined behavior.
+						
+						- Should be kept small so that they are easier to manually verify.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Garbage Collection
+
+						```cpp
+						void main() {
+							import core.memory;
+							import std.stdio;
+
+							GC.disable;
+							
+							writeln("Goodbye, GC!");
+						}
+						```
+						
+					</textarea>
+				</section>
+				<section class = "te" data-markdown>
+					<textarea data-template>
+						### test
+
+						1. show result (tell share) ok
+						2. 留 C.S ok
+						3. SERVER CLIENT 明顯
+						4. IN D ok
+						5. 拿掉註解 用... 
+						6. 1000 - 1 ok
+						7. show output ok
+						8. @safe 小 code 違規？舉例？
+						9. 
+					</textarea>
+				</section>
+				<section class = "te" data-markdown>
+					<textarea data-template>
+						### 
 					</textarea>
 				</section>
 			</section>
@@ -163,7 +771,8 @@
 
 	<script>
 		Reveal.initialize({
-			mouseWheel: true,
+			width: '80%',
+			// mouseWheel: true,
 			slideNumber: true,
 			dependencies: [{
 					src: '../plugin/markdown/marked.js'
