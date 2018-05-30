@@ -73,8 +73,13 @@
     color: rgb(124, 223, 137);
 }
 
-.blue {
+.reveal .orange h1,
+.orange{
     color: rgb(240, 172, 84);
+}
+
+.reveal #author-img{
+    margin-left:60%;
 }
 
 @media screen and (min-width:1200px) {

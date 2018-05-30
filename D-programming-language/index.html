@@ -51,12 +51,19 @@
 			</section>
 			<section>
 				<section>
+					<div class="orange">
+						<h1>Introduction</h1>
+					</div>
+				</section>
+				<section>
 					<div class = "container">
 						<div class = "msg-small">
-							<img src ="./images/WB.jpg">
+							<img id="author-img" src ="./images/WB.jpg">
 						</div>
 						<div id = "author-intro" class ="half">
 							<ul>
+								Walter Bright
+								<br><br>
 								<li>著名程式設計師</li>
 								<li>創立D語言建立D語言規範</li>
 								<li>實做第一個D語言編譯器</li>
@@ -356,13 +363,8 @@
 			</section>
 			<section>
 				<section>
-					<div>
-						<h3>
-							Grammar
-						</h3>
-					</div>
-					<div>
-						
+					<div class="orange">
+						<h1>Syntax</h1>
 					</div>
 				</section>
 				<section>
@@ -415,13 +417,8 @@
 			</section>
 			<section>
 				<section>
-					<div>
-						<h3>
-							Feature
-						</h3>
-					</div>
-					<div>
-						
+					<div class="orange">
+						<h1>Feature</h1>
 					</div>
 				</section>
 				<section>
@@ -525,7 +522,7 @@
 				<section>
 					<h3>Invariant</h3>
 					<div class="half-div">
-						specify characteristics of a <span class="blue">class</span> or <span class="blue">struct</span> 
+						specify characteristics of a <span class="orange">class</span> or <span class="orange">struct</span> 
 
 						that must always be true 
 						<pre><code class data-trim data-noescape>
@@ -606,21 +603,14 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						# Synchronization
+						## Synchronization
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Thread Local Storage (TLS)						
-
-						```
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						in sub thread : temp = 2, temp address is 7F7E4D68A580
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						in sub thread : temp = 2, temp address is 7F7E4D68A580
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						```
-					</textarea>
+				<section>
+					<h3>Thread Local Storage (TLS)</h3>
+					<div>
+						<img src="./images/tls.png">
+					</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -653,6 +643,19 @@
 						```
 					</textarea>
 				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Thread Local Storage (TLS)						
+
+						```
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						in sub thread : temp = 2, temp address is 7F7E4D68A580
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						in sub thread : temp = 2, temp address is 7F7E4D68A580
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						```
+					</textarea>
+				</section>
 				<section>
 					<div>
 						<h3>mutex</h3>
@@ -674,8 +677,8 @@
 					<div>
 						<h4>MESSAGE PASSING IN C/C++</h4>
 					</div>
-					<div class = "container">
-						<div class = "half">
+					<div class ="container">
+						<div class ="half">
 							<pre>
 								<code data-trim data-noescape contenteditable="true">
 								int main(int argc , char *argv[]) //server
@@ -1153,7 +1156,7 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						put your <span class="bigger green">algorithm</span> into <span class="bigger blue">struct</span> or <span class="bigger blue">class</span>
+						put your <span class="bigger green">algorithm</span> into <span class="bigger orange">struct</span> or <span class="bigger orange">class</span>
 					</textarea>
 				</section>
 				<section>
@@ -1242,10 +1245,8 @@
 			</section>
 			<section>
 				<section>
-					<div>
-						<h2>
-							Demo
-						</h2>
+					<div class="orange">
+						<h1>Demo</h1>
 					</div>
 				</section>
 			</section>	
