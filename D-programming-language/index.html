@@ -56,18 +56,18 @@
 					</div>
 				</section>
 				<section>
-					<div class = "container">
-						<div class = "msg-small">
-							<img id="author-img" src ="./images/WB.jpg">
+					<div class="container">
+						<div class="msg-small">
+							<img id="author-img" src="./images/WB.jpg">
 						</div>
-						<div id = "author-intro" class ="half">
+						<div id="author-intro" class="half">
 							<ul>
 								Walter Bright
-								<br><br>
-								<li>著名程式設計師</li>
-								<li>創立D語言建立D語言規範</li>
-								<li>實做第一個D語言編譯器</li>
+								<br>
+								<br>
 								<li>編譯專家，開發許多C++編譯器</li>
+								<li>創立D語言</li>
+								<li>實做D語言編譯器</li>
 							</ul>
 						</div>
 					</div>
@@ -81,11 +81,11 @@
 					<textarea data-template>
 						## Let’s look at existing language …
 
-						- Modeling Power?
+						- Worse Modeling Power
 
-						- Obsolete Technology?
+						- Obsolete Technology
 
-						- Waiting?
+						- Slow
 						
 					</textarea>
 				</section>
@@ -108,19 +108,14 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						# Why D ?
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## 1. Modeling Power?
+						## 1. Worse Modeling Power
 
 						![](https://i.imgur.com/oQ0bvIp.jpg)
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						## Great for Brick Like Models
+						## Great for Brick-Like Models
 
 						![](https://i.imgur.com/ntxPNoS.jpg)
 					</textarea>
@@ -142,7 +137,7 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						## Polymorphism
+						## Object-Oriented
 
 						``` 
 						interface Shape{
@@ -180,8 +175,8 @@
 						```
 					</textarea>
 				</section>
-				<section >
-					<h2>Generics</h2>					
+				<section>
+					<h2>Generics</h2>
 					<div class="half-div">
 						<pre>
 							<code data-trim data-noescape>
@@ -242,12 +237,7 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						# Why D?
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## 2. Obsolete Technology?
+						## 2. Obsolete Technology
 
 						![](https://i.imgur.com/SoRkKHf.jpg)
 					</textarea>
@@ -267,55 +257,67 @@
 						## Modern Convenience
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Associative Arrays
-						```
-						int[string] aa = ["hello":3, "world":4];
+				<section>
+					<div>
+						<h2>Associative Arrays</h2>
+					</div>
+					<div>
+						<pre>
+							<code data-trim data-noescape>
+									<span class ="highlight">int[string] aa = ["hello":3, "world":4];</span>
 
-						aa["hello"] = 5;  // set value associated with key "hello" to 5
-						int value = aa["hello"];  // lookup value from a key
-						assert(value == 5);
-						```
-					</textarea>
+								aa["hello"] = 5;  // set value associated with key "hello" to 5
+								int value = aa["hello"];  // lookup value from a key
+								assert(value == 5);
+							</code>
+						</pre>
+					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Static Typing With Inference
-						```cpp
-						void main(){
-							// type:double[]
-							auto arr = [1, 2, 3.14, 5.1, 6];
-							// type:int[string]
-							auto dictionary = ["one": 1, "two": 2, "three": 3];
-							
-							auto x = min(arr[0], dictionary["two"]);
-						}
-						
-						auto min(T1, T2)(T1 lhs, T2 rhs){
-							return rhs < lhs ? rhs : lhs;
-						}
-						```
-					</textarea>
+				<section>
+					<div>
+						<h2>Static Typing With Inference</h2>
+					</div>
+					<div>
+						<pre>
+							<code data-trim data-noescape>
+								void main(){
+									// type:double[]
+									<span class ="highlight">auto arr = [1, 2, 3.14, 5.1, 6];</span>
+									// type:int[string]
+									auto dictionary = ["one": 1, "two": 2, "three": 3];
+									
+									auto x = min(arr[0], dictionary["two"]);
+								}
+								
+								auto min(T1, T2)(T1 lhs, T2 rhs){
+									return rhs < lhs ? rhs : lhs;
+								}
+							</code>
+						</pre>
+					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Resource Management
-						```cpp
-						import std.stdio, core.stdc.stdlib
-						class Widget{    }
-						
-						void main(){
-							auto w = new Widget;    //automatic
-							
-							//Code is executed in any case upon scope exit
-							scope(exit){ writeln("Exiting main"); }
-							
-							auto p = malloc(10);    //explicit C style
-							if(p)free(p);
-						}
-						```
-					</textarea>
+				<section>
+					<div>
+						<h2>Resource Management</h2>
+					</div>
+					<div>
+						<pre>
+							<code data-trim data-noescape>
+								import std.stdio, core.stdc.stdlib
+								class Widget{    }
+								
+								void main(){
+									auto w = new Widget;    //automatic
+									
+									//Code is executed in any case upon scope exit
+									<span class ="highlight">scope(exit){ writeln("Exiting main"); }</span>
+									
+									auto p = malloc(10);    //explicit C style
+									if(p)free(p);
+								}
+							</code>
+						</pre>
+					</div>
 				</section>
 				<section>
 					<div>
@@ -339,12 +341,7 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						## Why D?
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## 3. Waiting?
+						## 3. Slow
 
 						Waiting for your prgram to load, to run …
 					</textarea>
@@ -422,7 +419,7 @@
 					</div>
 				</section>
 				<section>
-					<h3>Inline Assembler</h3>					
+					<h3>Inline Assembler</h3>
 					<div class="half-div">
 						<pre><code class data-trim data-noescape>
 						asm{
@@ -475,8 +472,8 @@
 					<div>
 						<h3>Contract Programming</h3>
 					</div>
-					<div class = "container">
-						<div class = "half">
+					<div class="container">
+						<div class="half">
 							<pre>
 								<code data-trim data-noescape contenteditable="true">
 								in
@@ -494,7 +491,7 @@
 								</code>
 							</pre>
 						</div>
-						<div class = "half">
+						<div class="half">
 							<img src="./images/Contract-Programming.png">
 						</div>
 					</div>
@@ -522,9 +519,11 @@
 				<section>
 					<h3>Invariant</h3>
 					<div class="half-div">
-						specify characteristics of a <span class="orange">class</span> or <span class="orange">struct</span> 
+						specify characteristics of a
+						<span class="orange">class</span> or
+						<span class="orange">struct</span>
 
-						that must always be true 
+						that must always be true
 						<pre><code class data-trim data-noescape>
 						invariant
 						{
@@ -556,14 +555,14 @@
 						</code></pre>
 					</div>
 				</section>
-				<section data-markdown> 
+				<section data-markdown>
 					<textarea data-template>
 						### When Invariants are checked
 
 						![](https://i.imgur.com/HHIY4XG.png)
 					</textarea>
 				</section>
-				<section data-markdown> 
+				<section data-markdown>
 					<textarea data-template>
 						### Order of Execution for Functions
 
@@ -580,7 +579,7 @@
 					</textarea>
 				</section>
 				<section>
-					<h3>UFCS Example</h3>					
+					<h3>UFCS Example</h3>
 					<div class="half-div">
 						<pre><code class data-trim data-noescape>
 						writeln(evens(divide(multiply(values, 10), 3)));
@@ -660,7 +659,7 @@
 					<div>
 						<h3>mutex</h3>
 					</div>
-					<div class = "half-div">		
+					<div class="half-div">
 						<pre>
 							<code data-trim data-noescape>
 								mtx.lock_nothrow();
@@ -671,14 +670,14 @@
 					
 							</code>
 						</pre>
-					</div>								
+					</div>
 				</section>
 				<section>
 					<div>
 						<h4>MESSAGE PASSING IN C/C++</h4>
 					</div>
-					<div class ="container">
-						<div class ="half">
+					<div class="container">
+						<div class="half">
 							<pre>
 								<code data-trim data-noescape contenteditable="true">
 								int main(int argc , char *argv[]) //server
@@ -715,7 +714,7 @@
 								</code>
 							</pre>
 						</div>
-						<div class = "half">
+						<div class="half">
 							<pre>
 								<code data-trim data-noescape contenteditable="true">
 								int main(int argc , char *argv[]) //client
@@ -759,7 +758,7 @@
 					</div>
 				</section>
 				<section>
-					<h3>message passing in D</h3>					
+					<h3>message passing in D</h3>
 					<div>
 						<pre>
 							<code data-trim data-noescape>
@@ -819,10 +818,10 @@
 				</section>
 				<section>
 					<div>
-						<h4>MESSAGE PASSING  IN D</h4>
+						<h4>MESSAGE PASSING IN D</h4>
 					</div>
-					<div class = "container">
-						<div class = "msg-bigger">
+					<div class="container">
+						<div class="msg-bigger">
 							<pre>
 								<code data-trim data-noescape>
 								void workerFunc(Tid tid)
@@ -850,7 +849,7 @@
 								</code>
 							</pre>
 						</div>
-						<div class = "msg-small">
+						<div class="msg-small">
 							<pre>
 								<code data-trim data-noescape>
 								Waiting for a message
@@ -892,10 +891,10 @@
 						</pre>
 					</div>
 				</section>
-				<section >
+				<section>
 					<h3>parallelism</h3>
-						<div>
-							<pre>
+					<div>
+						<pre>
 								<code data-trim data-noescape>						
 								import std.stdio;
 								import core.thread;
@@ -920,7 +919,7 @@
 								}
 								</code>
 							</pre>
-						</div>
+					</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -972,14 +971,14 @@
 							</code>
 						</pre>
 					</div>
-					
+
 					- Constraint : after C++20
 				</section>
 				<section>
 					<div>
 						<h3>Class Template</h3>
 					</div>
-					<p class="smaller">D</p>					
+					<p class="smaller">D</p>
 					<div class="half-div">
 						<pre>
 							<code data-trim data-noescape>
@@ -1160,7 +1159,7 @@
 					</textarea>
 				</section>
 				<section>
-					<h2>inputRange</h2>					
+					<h2>inputRange</h2>
 					<div class="half-div">
 						<pre>
 							<code data-trim data-noescape>
@@ -1231,7 +1230,7 @@
 					</textarea>
 				</section>
 				<section>
-					<div class ="half-div">
+					<div class="half-div">
 						<pre>
 							<code data-trim data-noescape>
 							FibonacciRange fib;
@@ -1249,7 +1248,7 @@
 						<h1>Demo</h1>
 					</div>
 				</section>
-			</section>	
+			</section>
 		</div>
 	</div>
 
@@ -1262,26 +1261,26 @@
 			// mouseWheel: true,
 			slideNumber: true,
 			dependencies: [{
-					src: '../plugin/markdown/marked.js'
-				},
-				{
-					src: '../plugin/markdown/markdown.js'
-				},
-				{
-					src: '../plugin/notes/notes.js',
-					async: true
-				},
-				{
-					src: './plugin/math-katex/math-katex.js',
-					async: true
-				},
-				{
-					src: '../plugin/highlight/highlight.js',
-					async: true,
-					callback: function () {
-						hljs.initHighlightingOnLoad();
-					}
+				src: '../plugin/markdown/marked.js'
+			},
+			{
+				src: '../plugin/markdown/markdown.js'
+			},
+			{
+				src: '../plugin/notes/notes.js',
+				async: true
+			},
+			{
+				src: './plugin/math-katex/math-katex.js',
+				async: true
+			},
+			{
+				src: '../plugin/highlight/highlight.js',
+				async: true,
+				callback: function () {
+					hljs.initHighlightingOnLoad();
 				}
+			}
 			]
 		});
 	</script>
