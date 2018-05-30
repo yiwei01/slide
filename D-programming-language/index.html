@@ -40,13 +40,13 @@
 				<textarea data-template>
 					### Outline
 
-					1. 介紹
+					1. Introduction
 
-					2. 語法
+					2. Syntax
 
-					3. 特徵
+					3. Features
 
-					4. DEMO
+					4. Demo
 				</textarea>
 			</section>
 			<section>
@@ -125,10 +125,8 @@
 						![](https://i.imgur.com/yT5cngo.jpg)
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						![](https://i.imgur.com/UWdfoLe.jpg =600x400)
-					</textarea>
+				<section>
+					<img src="./images/airplane.jpg">
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -175,51 +173,65 @@
 						```
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Generics
-
-						- Template Example
-					</textarea>
+				<section >
+					<h2>Generics</h2>					
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							template Foo (T)
+								if(is(T == int)) // constraint
+							{
+							    T number;
+							}
+							</code>
+						</pre>
+					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Generative
-						```
-						struct A{
-							int a;
-							mixin(bitfields!(
-								unit, "x", 2,
-								int, "y", 3,
-								uint, "z", 2,
-								bool, "flag", 1));
-						}
-
-						A obj;
-						obj.x = 2;
-						obj.z = obj.x;
-						```
-					</textarea>
+				<section>
+					<div>
+						<h2>Generative</h2>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							struct A{
+								int a;
+								mixin(bitfields!(
+									unit, "x", 2,
+									int, "y", 3,
+									uint, "z", 2,
+									bool, "flag", 1));
+							}
+	
+							A obj;
+							obj.x = 2;
+							obj.z = obj.x;
+							</code>
+						</pre>
+					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Contract
-						
-						```
-						in
-						{
-						    ... contract preconditions ...
-						}
-						out (result)
-						{
-						    ... contract postconditions ...
-						}
-						do
-						{
-						    ... code ...
-						}
-						```
-					</textarea>
+				<section>
+					<div>
+						<h2>Contract</h2>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							in
+							{
+								... contract preconditions ...
+							}
+							out (result)
+							{
+								... contract postconditions ...
+							}
+							do
+							{
+								... code ...
+							}
+							</code>
+						</pre>
+					</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -228,7 +240,7 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						# 2. Obsolete Technology?
+						## 2. Obsolete Technology?
 
 						![](https://i.imgur.com/SoRkKHf.jpg)
 					</textarea>
@@ -298,16 +310,20 @@
 						```
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Slices
-						```cpp
-						auto filename = "etc/c/zip d"
-						auto path = filename[0..6];    //"etc/c/"
-						auto name = filename[6..9];    //"zip"
-						auto ext = filename[10..11];    //"d"
-						```
-					</textarea>
+				<section>
+					<div>
+						<h2>Slices</h2>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							auto filename = "etc/c/zip d"
+							auto path = filename[0..6];    //"etc/c/"
+							auto name = filename[6..9];    //"zip"
+							auto ext = filename[10..11];    //"d"
+							</code>
+						</pre>
+					</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -342,38 +358,269 @@
 				<section>
 					<div>
 						<h3>
-							語法
+							Grammar
 						</h3>
 					</div>
 					<div>
 						
 					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### 語法的第二頁
-					
+				<section>
+					<div class="half-div">
+						<pre>
+							<code class data-trim data-noescape>
+							if(a == 1){
+								writefln("a = %d",a);
+							}
+							else if(a == 2)
+								writefln("a = %d",a);
+							else{
+								...
+							}
 
-					</textarea>
+							switch(name)	//string can be used
+							{
+								default: 
+									writefln("default");
+									break;
+								case "Tom":
+									writeln("Tom");
+									break;
+								case "Mike":
+									writefln("Mike");
+							}
+							</code>
+						</pre>
+					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### 語法的第三頁
+				<section>
+					<div class="half-div">
+						<pre>
+							<code class data-trim data-noescape>
+							for (int i = 0; i < 10; i++){
+								func(i);
+							}
 
-						
-					</textarea>
+							while(i < 10){
+								writefln("%d",i++);
+							}
+
+							do{
+								writefln("%d",i);
+							} while(++i < 10);
+							</code>
+						</pre>
+					</div>
 				</section>
 			</section>
 			<section>
 				<section>
 					<div>
 						<h3>
-							特徵
+							Feature
 						</h3>
 					</div>
 					<div>
 						
 					</div>
+				</section>
+				<section>
+					<h3>Inline Assembler</h3>					
+					<div class="half-div">
+						<pre><code class data-trim data-noescape>
+						asm{
+							assembler language
+						}
+						</code></pre>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Example
+						<pre><code class data-trim data-noescape>
+						void *pc;
+						asm
+						{
+						    call L1          ;
+						    L1:             ;
+							pop  EBX         ;
+							mov  pc[EBP],EBX ; // pc now points to code at L1
+						}
+						</code></pre>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Contract Programming
+					</textarea>
+				</section>
+				<section>
+					<h3>Assert</h3>
+					<div class="half-div">
+						<pre><code class data-trim data-noescape>
+						assert(expression);
+						</code></pre>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Assert Example
+						<pre><code class data-trim data-noescape>
+						void main(){
+							int a = 0;
+							assert(a==1);
+						}
+						//core.exception.AssertError@p.d(3): Assertion failure
+						</code></pre>
+					</textarea>
+				</section>
+				<section>
+					<div>
+						<h3>Contract Programming</h3>
+					</div>
+					<div class = "container">
+						<div class = "half">
+							<pre>
+								<code data-trim data-noescape contenteditable="true">
+								in
+								{
+									contract preconditions
+								}
+								out(result)
+								{
+									contract postconditions
+								}
+								do
+								{
+									code
+								}
+								</code>
+							</pre>
+						</div>
+						<div class = "half">
+							<img src="./images/Contract-Programming.png">
+						</div>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Example
+						<pre><code class data-trim data-noescape>
+						long square_root(long x)
+						in
+						{
+							assert(x >= 0);
+						}
+						out (result)
+						{
+							assert(result >= 0);
+						}
+						do
+						{
+						    return cast(long)std.math.sqrt(cast(real)x);
+						}
+						</code></pre>
+					</textarea>
+				</section>
+				<section>
+					<h3>Invariant</h3>
+					<div class="half-div">
+						specify characteristics of a <span class="blue">class</span> or <span class="blue">struct</span> 
+
+						that must always be true 
+						<pre><code class data-trim data-noescape>
+						invariant
+						{
+							assert(expr1);
+							assert(expr2);
+							...
+						}
+						</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Invariant Example</h3>
+					<div class="half-div">
+						<pre><code class data-trim data-noescape>
+							class Date
+							{
+								int day;
+								int hour;
+								this (int d, int h){
+									day = d;
+									hour = h;
+								}
+								invariant
+								{
+									assert(1 <= day && day <=31);
+									assert(0 <= hour && hour < 24);
+								}
+							}
+						</code></pre>
+					</div>
+				</section>
+				<section data-markdown> 
+					<textarea data-template>
+						### When Invariants are checked
+
+						![](https://i.imgur.com/HHIY4XG.png)
+					</textarea>
+				</section>
+				<section data-markdown> 
+					<textarea data-template>
+						### Order of Execution for Functions
+
+						![](https://i.imgur.com/zxU6A2r.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Uniform Function Call Syntax (UFCS)
+
+						func(a) $\leftrightarrow \ $  a.func()
+
+						func(a, b) $\leftrightarrow \ $  a.func(b)
+					</textarea>
+				</section>
+				<section>
+					<h3>UFCS Example</h3>					
+					<div class="half-div">
+						<pre><code class data-trim data-noescape>
+						writeln(evens(divide(multiply(values, 10), 3)));
+						
+						values.multiply(10).divide(3).evens.writeln;
+						</code></pre>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### UFCS Example (+add)
+						<pre><code class data-trim data-noescape>
+						// Original
+						writeln(evens(add(divide(multiply(values, 10), 3), 5)));
+						
+						// UFCS
+						values.multiply(10).divide(3).add(5).evens.writeln;
+						</code></pre>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Synchronization
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Thread Local Storage (TLS)						
+
+						```
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						in sub thread : temp = 2, temp address is 7F7E4D68A580
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						in sub thread : temp = 2, temp address is 7F7E4D68A580
+						in main thread : temp = 1, temp address is 7F7E4E79C740
+						```
+					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -406,23 +653,11 @@
 						```
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Thread Local Storage (TLS)						
-
-						```
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						in sub thread : temp = 2, temp address is 7F7E4D68A580
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						in sub thread : temp = 2, temp address is 7F7E4D68A580
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						```
-					</textarea>
-				</section>
 				<section>
 					<div>
 						<h3>mutex</h3>
-					</div>		
+					</div>
+					<div class = "half-div">		
 						<pre>
 							<code data-trim data-noescape>
 								mtx.lock_nothrow();
@@ -433,6 +668,7 @@
 					
 							</code>
 						</pre>
+					</div>								
 				</section>
 				<section>
 					<div>
@@ -483,7 +719,7 @@
 								{		
 									//socket的建立
 									int sockfd = 0;
-									sockfd = socket(<span class ="highlight">AF_INET</span> , SOCK_STREAM , 0);
+									sockfd = socket(AF_INET, SOCK_STREAM , 0);
 									
 									if (sockfd == -1){
 										printf("Fail to create a socket.");
@@ -519,61 +755,63 @@
 						</div>
 					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### message passing in D
-
-						```cpp
-						void workerFunc(Tid tid) { 
-							int value = 0;  
-							while (value >= 0) { 
-								value = receiveOnly!int();
-								auto result = to!int(value) * 5;
-								tid.send(result);
-							}
-						} 
-						 
-						void main() { 
-							Tid worker = spawn(&workerFunc,thisTid); 
+				<section>
+					<h3>message passing in D</h3>					
+					<div>
+						<pre>
+							<code data-trim data-noescape>
+							void workerFunc(Tid tid) { 
+								int value = 0;  
+								while (value >= 0) { 
+									value = <span class ="highlight">receiveOnly!int();</span>
+									auto result = to!int(value) * 5;
+									<span class ="highlight">tid.send(result);</span>
+								}
+							} 
 							
-							foreach (value; 5 .. 10) {
-								worker.send(value);
-								auto result = receiveOnly!int();
-								writefln("main sent: %s, received: %s", value, result); // value = 5 ,result = 30 ...
-							}
-							
-							worker.send(-1); 
-						} 
-						```
-					</textarea>
+							void main() { 
+								Tid worker = spawn(&workerFunc,thisTid); 
+								
+								foreach (value; 5 .. 10) {
+									<span class ="highlight">worker.send(value);</span>
+									auto result = <span class ="highlight">receiveOnly!int()</span>;
+									writefln("main sent: %s, received: %s", value, result); // value = 5 ,result = 30 ...
+								}
+								
+								worker.send(-1); 
+							} 
+							</code>
+						</pre>
+					</div>
 				</section>
 				<section data-markdown>
+					<h3>message passing in D</h3>
 					<textarea data-template>
-						### message passing in D
-
-						```cpp
-						void worker(Tid parentId)
-						{
-						    bool canceled = false;
-						    writeln("Starting ", thisTid, "...");
-						
-						    while (!canceled) {
-						      receive(
-						        (NumberMessage m) {	//	input NumberMessage (struct)
-						          writeln("Received int: ", m.number);
-						        },
-						        (string text) {	//	input string
-						          writeln("Received string: ", text);
-						        },
-						        (CancelMessage m) {	//	input CancelMessage (struct)
-						          writeln("Stopping ", thisTid, "...");
-						          send(parentId, CancelAckMessage());
-						          canceled = true;
-						        }
-						      );
-						    }
-						}
-						```
+						<pre>
+							<code data-trim data-noescape>
+							void worker(Tid parentId)
+							{
+								bool canceled = false;
+								writeln("Starting ", thisTid, "...");
+							
+								while (!canceled) {
+								receive(
+									<span class ="highlight">(NumberMessage m)</span> {	//	input NumberMessage (struct)
+										writeln("Received int: ", m.number);
+									},
+									<span class ="highlight">(string text)</span> {	//	input string
+										writeln("Received string: ", text);
+									},
+									<span class ="highlight">(CancelMessage m)</span> {	//	input CancelMessage (struct)
+										writeln("Stopping ", thisTid, "...");
+										send(parentId, CancelAckMessage());
+										canceled = true;
+									}
+								);
+								}
+							}
+							</code>
+						</pre>
 					</textarea>
 				</section>
 				<section>
@@ -598,7 +836,7 @@
 									bool received = false;		
 									while (!received)
 									{
-										received = receiveTimeout(dur!("secs")( 1 ),
+										received = <span class ="highlight">receiveTimeout(dur!("secs")( 1 )</span>,
 										(string message){
 											writeln("received: ", message);
 										});
@@ -623,144 +861,392 @@
 						</div>
 					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Fiber
-
-						```cpp
-						import std.stdio;
-						import core.thread : Fiber;
-
-						void foo() {
-						    writeln("Hello");
-						    Fiber.yield();
-						    writeln("World");
-						}
-
-						int main(){
+				<section>
+					<div>
+						<h3>Fiber</h3>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							import std.stdio;
+							import core.thread : Fiber;
+	
+							void foo() {
+								writeln("Hello");
+								<span class ="highlight">Fiber.yield();</span>
+								writeln("World");
+							}
+	
+							int main(){
+								
+								auto f = new Fiber(&foo);
+								f.call(); // prints Hello
+								f.call(); // prints World
 							
-							auto f = new Fiber(&foo);
-							f.call(); // prints Hello
-						    f.call(); // prints World
-						
-						    return 0;
-						}
-						```
-					</textarea>
+								return 0;
+							}
+							</code>
+						</pre>
+					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### parallelism
+				<section >
+					<h3>parallelism</h3>
+						<div>
+							<pre>
+								<code data-trim data-noescape>						
+								import std.stdio;
+								import core.thread;
+								import std.parallelism;
+								
+								struct Student {
+									int number;
+								
+									void sleepOperation() {
+										Thread.sleep(1.seconds);
+										writefln("The work on student %s has ended", number);
+									}
+								}
 
-						```cpp
-						import std.stdio;
-						import core.thread;
-						import std.parallelism;
-						
-						struct Student {
-							int number;
-						
-							void sleepOperation() {
-								Thread.sleep(1.seconds);
-								writefln("The work on student %s has ended", number);
-							}
-						}
-
-						void main() {
-							auto students =
-								[ Student(1), Student(2), Student(3), Student(4) ];
-						
-							foreach (student; parallel(students)) {	//	parallelism
-								student.sleepOperation();
-							}
-						}
-						```
-					</textarea>
+								void main() {
+									auto students =
+										[ Student(1), Student(2), Student(3), Student(4) ];
+								
+									foreach (student; <span class ="highlight">parallel</span>(students)) {	//	parallelism
+										student.sleepOperation();
+									}
+								}
+								</code>
+							</pre>
+						</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 						### @safe
-
-						1. Casts that break the type system.
-
-						2. Modification of pointer values.
-
-						3. Taking the address of a local variable or function parameter.
 						
 						Other attributes : @trusted , @system ...			
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### @trusted
-
-						- Guaranteed by the programmer to not exhibit any undefined behavior.
-						
-						- Should be kept small so that they are easier to manually verify.
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Garbage Collection
-
-						```cpp
-						void main() {
-							import core.memory;
-							import std.stdio;
-
-							GC.disable;
+				<section>
+					<h3>Garbage Collection</h3>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							void main() {
+								import core.memory;
+								import std.stdio;
 							
-							writeln("Goodbye, GC!");
+								<span class ="highlight">GC.disable</span>;
+								writeln("Goodbye, GC!");
+							}
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Template
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Template
+
+						→ <span style="color:yellow">Generic Programming</span>
+					</textarea>
+				</section>
+				<section>
+					<div>
+						<h2>Template Declaration</h2>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							template Foo (T)
+								<span class ="highlight">if(is(T == int))</span> // constraint
+							{
+							    T number;
+							}
+							</code>
+						</pre>
+					</div>
+					
+					- Constraint : after C++20
+				</section>
+				<section>
+					<div>
+						<h3>Class Template</h3>
+					</div>
+					<p class="smaller">D</p>					
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+								class Foo<span class = "highlight">(T)</span>{
+									T x;
+									this(T init){ this.x = init; }
+								}
+								auto foo = Foo!(int)(10);
+							</code>
+						</pre>
+					</div>
+					<p class="smaller">C++</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							<span class = "highlight">template < class T></span>
+							class Foo{
+								T x;
+								Foo(T init){ this.x = init; }
+							};
+							auto foo = Foo<int>(10); 
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>Function Template</h2>
+					</div>
+					<p>D</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							T Foo<span class = "highlight">(T)</span>(T t){
+								return t;
+							}
+							</code>
+						</pre>
+					</div>
+					<p>C++</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							<span class = "highlight">template < class T > </span>
+							T Foo(T t){
+								return t;
+							};
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h3>Grouping templates with the same parameters</h3>
+					</div>
+					<p>C++</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							<span class="highlight">template< class T, class U></span>
+							class Foo_Bar { ... };
+							
+							<span class="highlight">template< class T, class U></span>
+							T Foo_foo(T t, U u) { ... };
+							</code>
+						</pre>
+					</div>
+					<p>D</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+						template Foo<span class="highlight">(T, U)</span>
+						{
+							class Bar { ... }
+							T foo(T t, U u) { ... }
 						}
-						```
+							</code>
+						</pre>
+					</div>
+				</section>
+				<!-- <section>
+					<div>
+						<h2>Template Default Values</h2>
+					</div>
+					<p>D</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							class Foo(<span class ="highlight">T = int</span>){
+								T x;
+							}
+							</code>
+						</pre>
+					</div>
+					<p>C++</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							template < class <span class ="highlight">T = int</span>>
+							class Foo{
+								T x;
+							}
+							</code>
+						</pre>
+					</div>
+				</section> -->
+				<section>
+					<div>
+						<h2>Library</h2>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							import std.conv;
+							alias toString = <span class="highlight">to!string</span>;
+							string ten = toStrnig(10);
+							
+							alias toDouble = <span class="highlight">to!double</span>;
+							double nine = toDouble(10);
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>Readability</h2>
+					</div>
+					<p>C++</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							template< class T>
+							struct Alloc { };
+							
+							template< class T>
+							using Vec = vector<span class="highlight">< T, Alloc< T > ></span>;
+							// since C++14
+							
+							Vec<int> v;
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Reference
+
+						- [C++ template](http://en.cppreference.com/w/cpp/language/templates)
+						- [Template Comparison](https://dlang.org/articles/template-comparison.html)
+						- [Template Revisited](https://dlang.org/articles/templates-revisited.html)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Range
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://i.imgur.com/rVdos2Z.png)
+					</textarea>
+				</section>
+				<section>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							foreach(item; items) 
+							{
+							    // do something with item
+							}
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						put your <span class="bigger green">algorithm</span> into <span class="bigger blue">struct</span> or <span class="bigger blue">class</span>
+					</textarea>
+				</section>
+				<section>
+					<h2>inputRange</h2>					
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							interface InputRange(E)
+							{
+								bool empty();
+								E front();
+								void popFront();
+							}
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>INPUTRANGE</h2>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							struct FibonacciRange {
+								int first = 1, second = 1;
+							
+								//The fibonacci range never ends
+								enum <span class = "highlight">empty</span> = false; 
+							
+								int <span class = "highlight">front()</span> const @property{
+									return first;
+								}
+							
+								void <span class = "highlight">popFront()</span>{
+									auto t = first;
+									first = second;
+									second = t + second;
+								}
+							}
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							FibonacciRange fib;
+
+							fib.take(10).writeln; 
+							// [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Lazy
+
+						『 Produce elements only when needed 』
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Benefit of Laziness
+
+						1. Infinite ranges can even exist.
+						
+						2. Don’t need to space for unused elements
 						
 					</textarea>
 				</section>
-				<section class = "te" data-markdown>
-					<textarea data-template>
-						### test
+				<section>
+					<div class ="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							FibonacciRange fib;
 
-						1. show result (tell share) ok
-						2. 留 C.S ok
-						3. SERVER CLIENT 明顯
-						4. IN D ok
-						5. 拿掉註解 用... 
-						6. 1000 - 1 ok
-						7. show output ok
-						8. @safe 小 code 違規？舉例？
-						9. 
-					</textarea>
-				</section>
-				<section class = "te" data-markdown>
-					<textarea data-template>
-						### 
-					</textarea>
+							fib.take(10).writeln; 
+							// [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+							</code>
+						</pre>
+					</div>
 				</section>
 			</section>
 			<section>
 				<section>
 					<div>
-						<h3>
-							DEMO
-						</h3>
+						<h2>
+							Demo
+						</h2>
 					</div>
-					<div>
-						
-					</div>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### DEMO的第二頁
-					
-
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### DEMO的第三頁
-
-						
-					</textarea>
 				</section>
 			</section>	
 		</div>

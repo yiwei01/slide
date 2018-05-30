@@ -56,14 +56,25 @@
     text-align: left;
 }
 
-.highlight{
-    background-color: blanchedalmond;
-    color: red;
+.reveal .highlight{
+    border: 2px solid rgb(255, 94, 94);
 }
 
 #author-intro{
     text-align:left;
     padding-left: -100px;    
+}
+
+.reveal .bigger {
+    font-size: 1.5em;
+}
+
+.green {
+    color: rgb(124, 223, 137);
+}
+
+.blue {
+    color: rgb(240, 172, 84);
 }
 
 @media screen and (min-width:1200px) {
@@ -82,5 +93,17 @@
     .reveal .msg-bigger pre code ,
     .reveal .msg-small pre code {
         width: 100%;
+    }
+
+    .reveal .half-div
+    {
+        margin: 0px auto;
+        width: 50%;
+    }
+
+    .reveal .eighty-div
+    {
+        margin: 0px auto;
+        width: 80%;
     }
 }
