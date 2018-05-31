@@ -38,15 +38,13 @@
 			</section>
 			<section data-markdown>
 				<textarea data-template>
-					### Outline
+					## Outline
 
-					1. Introduction
+					- Introduction
 
-					2. Syntax
+					- Features
 
-					3. Features
-
-					4. Demo
+					- Demo
 				</textarea>
 			</section>
 			<section>
@@ -264,7 +262,7 @@
 					<div>
 						<pre>
 							<code data-trim data-noescape>
-									<span class ="highlight">int[string] aa = ["hello":3, "world":4];</span>
+								<span class ="highlight">int[string] aa = ["hello":3, "world":4];</span>
 
 								aa["hello"] = 5;  // set value associated with key "hello" to 5
 								int value = aa["hello"];  // lookup value from a key
@@ -361,60 +359,6 @@
 			<section>
 				<section>
 					<div class="orange">
-						<h1>Syntax</h1>
-					</div>
-				</section>
-				<section>
-					<div class="half-div">
-						<pre>
-							<code class data-trim data-noescape>
-							if(a == 1){
-								writefln("a = %d",a);
-							}
-							else if(a == 2)
-								writefln("a = %d",a);
-							else{
-								...
-							}
-
-							switch(name)	//string can be used
-							{
-								default: 
-									writefln("default");
-									break;
-								case "Tom":
-									writeln("Tom");
-									break;
-								case "Mike":
-									writefln("Mike");
-							}
-							</code>
-						</pre>
-					</div>
-				</section>
-				<section>
-					<div class="half-div">
-						<pre>
-							<code class data-trim data-noescape>
-							for (int i = 0; i < 10; i++){
-								func(i);
-							}
-
-							while(i < 10){
-								writefln("%d",i++);
-							}
-
-							do{
-								writefln("%d",i);
-							} while(++i < 10);
-							</code>
-						</pre>
-					</div>
-				</section>
-			</section>
-			<section>
-				<section>
-					<div class="orange">
 						<h1>Feature</h1>
 					</div>
 				</section>
@@ -462,7 +406,7 @@
 						<pre><code class data-trim data-noescape>
 						void main(){
 							int a = 0;
-							assert(a==1);
+							assert(a == 1);
 						}
 						//core.exception.AssertError@p.d(3): Assertion failure
 						</code></pre>
@@ -492,7 +436,7 @@
 							</pre>
 						</div>
 						<div class="half">
-							<img src="./images/Contract-Programming.png">
+							<img class="pig-img" src="./images/pig.jpg">
 						</div>
 					</div>
 				</section>
@@ -559,14 +503,14 @@
 					<textarea data-template>
 						### When Invariants are checked
 
-						![](https://i.imgur.com/HHIY4XG.png)
+						![](https://i.imgur.com/iEPekyG.png)
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 						### Order of Execution for Functions
 
-						![](https://i.imgur.com/zxU6A2r.png)
+						![](https://i.imgur.com/ObWa1i2.png)
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -580,23 +524,21 @@
 				</section>
 				<section>
 					<h3>UFCS Example</h3>
-					<div class="half-div">
 						<pre><code class data-trim data-noescape>
 						writeln(evens(divide(multiply(values, 10), 3)));
 						
 						values.multiply(10).divide(3).evens.writeln;
 						</code></pre>
-					</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 						### UFCS Example (+add)
 						<pre><code class data-trim data-noescape>
 						// Original
-						writeln(evens(add(divide(multiply(values, 10), 3), 5)));
+						writeln(evens(<span class="highlight">add(</span>divide(multiply(values, 10), 3)<span class="highlight">, 5)</span>));
 						
 						// UFCS
-						values.multiply(10).divide(3).add(5).evens.writeln;
+						values.multiply(10).divide(3)<span class="highlight">.add(5)</span>.evens.writeln;
 						</code></pre>
 					</textarea>
 				</section>
@@ -956,7 +898,7 @@
 						→ <span style="color:yellow">Generic Programming</span>
 					</textarea>
 				</section>
-				<section>
+				<!-- <section>
 					<div>
 						<h2>Template Declaration</h2>
 					</div>
@@ -973,22 +915,10 @@
 					</div>
 
 					- Constraint : after C++20
-				</section>
+				</section> -->
 				<section>
 					<div>
 						<h3>Class Template</h3>
-					</div>
-					<p class="smaller">D</p>
-					<div class="half-div">
-						<pre>
-							<code data-trim data-noescape>
-								class Foo<span class = "highlight">(T)</span>{
-									T x;
-									this(T init){ this.x = init; }
-								}
-								auto foo = Foo!(int)(10);
-							</code>
-						</pre>
 					</div>
 					<p class="smaller">C++</p>
 					<div class="half-div">
@@ -1003,20 +933,22 @@
 							</code>
 						</pre>
 					</div>
+					<p class="smaller">D</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+								class Foo<span class = "highlight">(T)</span>{
+									T x;
+									this(T init){ this.x = init; }
+								}
+								auto foo = Foo!(int)(10);
+							</code>
+						</pre>
+					</div>
 				</section>
 				<section>
 					<div>
 						<h2>Function Template</h2>
-					</div>
-					<p>D</p>
-					<div class="half-div">
-						<pre>
-							<code data-trim data-noescape>
-							T Foo<span class = "highlight">(T)</span>(T t){
-								return t;
-							}
-							</code>
-						</pre>
 					</div>
 					<p>C++</p>
 					<div class="half-div">
@@ -1026,6 +958,16 @@
 							T Foo(T t){
 								return t;
 							};
+							</code>
+						</pre>
+					</div>
+					<p>D</p>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							T Foo<span class = "highlight">(T)</span>(T t){
+								return t;
+							}
 							</code>
 						</pre>
 					</div>
@@ -1087,23 +1029,6 @@
 				</section> -->
 				<section>
 					<div>
-						<h2>Library</h2>
-					</div>
-					<div class="half-div">
-						<pre>
-							<code data-trim data-noescape>
-							import std.conv;
-							alias toString = <span class="highlight">to!string</span>;
-							string ten = toStrnig(10);
-							
-							alias toDouble = <span class="highlight">to!double</span>;
-							double nine = toDouble(10);
-							</code>
-						</pre>
-					</div>
-				</section>
-				<section>
-					<div>
 						<h2>Readability</h2>
 					</div>
 					<p>C++</p>
@@ -1118,6 +1043,23 @@
 							// since C++14
 							
 							Vec<int> v;
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>Library</h2>
+					</div>
+					<div class="half-div">
+						<pre>
+							<code data-trim data-noescape>
+							import std.conv;
+							alias toString = <span class="highlight">to!string</span>;
+							string ten = toStrnig(10);
+							
+							alias toDouble = <span class="highlight">to!double</span>;
+							double nine = toDouble(10);
 							</code>
 						</pre>
 					</div>
@@ -1138,24 +1080,18 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						![](https://i.imgur.com/rVdos2Z.png)
+						<img class ="fib-img" src="https://i.imgur.com/1p6RucE.png">
+						<!-- ![](https://i.imgur.com/1p6RucE.png) -->
 					</textarea>
-				</section>
-				<section>
-					<div class="half-div">
-						<pre>
-							<code data-trim data-noescape>
-							foreach(item; items) 
-							{
-							    // do something with item
-							}
-							</code>
-						</pre>
-					</div>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 						put your <span class="bigger green">algorithm</span> into <span class="bigger orange">struct</span> or <span class="bigger orange">class</span>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://i.imgur.com/rVdos2Z.png)
 					</textarea>
 				</section>
 				<section>
@@ -1206,7 +1142,7 @@
 							<code data-trim data-noescape>
 							FibonacciRange fib;
 
-							fib.take(10).writeln; 
+							<span class="highlight">fib.take(10)</span>.writeln; 
 							// [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 							</code>
 						</pre>
@@ -1223,10 +1159,9 @@
 					<textarea data-template>
 						## Benefit of Laziness
 
-						1. Infinite ranges can even exist.
+						『 Doesn't need space before using 』
 						
-						2. Don’t need to space for unused elements
-						
+						e.g. Infinite ranges can even exist.
 					</textarea>
 				</section>
 				<section>
@@ -1235,7 +1170,7 @@
 							<code data-trim data-noescape>
 							FibonacciRange fib;
 
-							fib.take(10).writeln; 
+							<span class="highlight">fib.take(10)</span>.writeln; 
 							// [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 							</code>
 						</pre>
