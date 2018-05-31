@@ -548,6 +548,9 @@
 					</textarea>
 				</section>
 				<section>
+					<h2>Thread Local Storage (TLS)</h2>
+				</section>
+				<section>
 					<h3>Thread Local Storage (TLS)</h3>
 					<div>
 						<img src="./images/tls.png">
@@ -584,22 +587,23 @@
 						```
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Thread Local Storage (TLS)						
-
-						```
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						in sub thread : temp = 2, temp address is 7F7E4D68A580
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						in sub thread : temp = 2, temp address is 7F7E4D68A580
-						in main thread : temp = 1, temp address is 7F7E4E79C740
-						```
-					</textarea>
+				<section>
+					<h3>Thread Local Storage (TLS)</h3>					
+					<div>
+						<pre>
+							<code class data-trim data-noescape>
+							in main thread : <span class ="highlight">temp = 1</span>, temp address is 7F7E4E79C7<span class ="highlight">40</span>
+							in sub  thread : <span class ="highlight">temp = 2</span>, temp address is 7F7E4D68A5<span class ="highlight">80</span>
+							in main thread : temp = 1, temp address is 7F7E4E79C740
+							in sub  thread : temp = 2, temp address is 7F7E4D68A580
+							in main thread : temp = 1, temp address is 7F7E4E79C740
+							</code>
+						</pre>
+					</div>
 				</section>
 				<section>
 					<div>
-						<h3>mutex</h3>
+						<h2>Mutex</h2>
 					</div>
 					<div class="half-div">
 						<pre>
@@ -615,8 +619,11 @@
 					</div>
 				</section>
 				<section>
+					<h2>Message Passing</h2>
+				</section>
+				<section>
 					<div>
-						<h4>MESSAGE PASSING IN C/C++</h4>
+						<h4>Message Passing in C/C++</h4>
 					</div>
 					<div class="container">
 						<div class="half">
@@ -700,7 +707,7 @@
 					</div>
 				</section>
 				<section>
-					<h3>message passing in D</h3>
+					<h3>Message Passing in D</h3>
 					<div>
 						<pre>
 							<code data-trim data-noescape>
@@ -729,15 +736,12 @@
 					</div>
 				</section>
 				<section data-markdown>
-					<h3>message passing in D</h3>
 					<textarea data-template>
+						### Message Passing in D
 						<pre>
 							<code data-trim data-noescape>
 							void worker(Tid parentId)
 							{
-								bool canceled = false;
-								writeln("Starting ", thisTid, "...");
-							
 								while (!canceled) {
 								receive(
 									<span class ="highlight">(NumberMessage m)</span> {	//	input NumberMessage (struct)
@@ -750,8 +754,7 @@
 										writeln("Stopping ", thisTid, "...");
 										send(parentId, CancelAckMessage());
 										canceled = true;
-									}
-								);
+									});
 								}
 							}
 							</code>
@@ -760,7 +763,7 @@
 				</section>
 				<section>
 					<div>
-						<h4>MESSAGE PASSING IN D</h4>
+						<h4>Message Passing in D</h4>
 					</div>
 					<div class="container">
 						<div class="msg-bigger">
@@ -834,7 +837,7 @@
 					</div>
 				</section>
 				<section>
-					<h3>parallelism</h3>
+					<h3>Parallel</h3>
 					<div>
 						<pre>
 								<code data-trim data-noescape>						
@@ -862,6 +865,11 @@
 								</code>
 							</pre>
 					</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Memory Security			
+					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -1001,32 +1009,6 @@
 						</pre>
 					</div>
 				</section>
-				<!-- <section>
-					<div>
-						<h2>Template Default Values</h2>
-					</div>
-					<p>D</p>
-					<div class="half-div">
-						<pre>
-							<code data-trim data-noescape>
-							class Foo(<span class ="highlight">T = int</span>){
-								T x;
-							}
-							</code>
-						</pre>
-					</div>
-					<p>C++</p>
-					<div class="half-div">
-						<pre>
-							<code data-trim data-noescape>
-							template < class <span class ="highlight">T = int</span>>
-							class Foo{
-								T x;
-							}
-							</code>
-						</pre>
-					</div>
-				</section> -->
 				<section>
 					<div>
 						<h2>Readability</h2>
@@ -1043,23 +1025,6 @@
 							// since C++14
 							
 							Vec<int> v;
-							</code>
-						</pre>
-					</div>
-				</section>
-				<section>
-					<div>
-						<h2>Library</h2>
-					</div>
-					<div class="half-div">
-						<pre>
-							<code data-trim data-noescape>
-							import std.conv;
-							alias toString = <span class="highlight">to!string</span>;
-							string ten = toStrnig(10);
-							
-							alias toDouble = <span class="highlight">to!double</span>;
-							double nine = toDouble(10);
 							</code>
 						</pre>
 					</div>
@@ -1095,7 +1060,7 @@
 					</textarea>
 				</section>
 				<section>
-					<h2>inputRange</h2>
+					<h2>InputRange</h2>
 					<div class="half-div">
 						<pre>
 							<code data-trim data-noescape>
@@ -1111,7 +1076,7 @@
 				</section>
 				<section>
 					<div>
-						<h2>INPUTRANGE</h2>
+						<h2>Fibonacci</h2>
 					</div>
 					<div class="half-div">
 						<pre>
@@ -1161,7 +1126,7 @@
 
 						『 Doesn't need space before using 』
 						
-						e.g. Infinite ranges can even exist.
+						e.g. Infinite sequences can even exist.
 					</textarea>
 				</section>
 				<section>
