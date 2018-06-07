@@ -30,7 +30,7 @@
 		<div class="slides">
 			<section>
 				<h2>
-					Graph reachability quries : a survey
+					GRAPH REACHABILITY QURIES : A SURVEY
 				</h2>
 
 				<div class="right-align">
@@ -38,58 +38,42 @@
 					<br> Student : Yi-Wei,Wang
 				</div>
 			</section>
-			<section data-markdown>
-				<textarea data-template>
-					### Outline
-
-					- Introduction
-					<br> <font size = "6px">1. Tree + SSPI
-					<br> 2. GRIPP
-					<br> 3. Dual-Labeling
-					<br> 4. Tree Cover
-					<br> 5. Chain Cover
-					<br> 6. Path-Tree Cover
-					<br> 7. 2-Hop Cover
-					<br> 8. 3-Hop Cover
-					<br> 9. Distance-Aware 2-Hop Cover
-					<br> 10. Graph Pattern Matching</font>
-				</textarea>
-			</section>
 			<section>
+				<section data-markdown>
+					<textarea data-template>
+						### Outline
+
+						- Introduction
+						<br> <font size = "6px">1. Tree + SSPI
+						<br> 2. GRIPP
+						<br> 3. Dual-Labeling
+						<br> 4. Tree Cover
+						<br> 5. Chain Cover
+						<br> 6. Path-Tree Cover
+						<br> 7. 2-Hop Cover
+						<br> 8. 3-Hop Cover
+						<br> 9. Distance-Aware 2-Hop Cover
+						<br> 10. Graph Pattern Matching</font>
+					</textarea>
+				</section>
 				<section>
+					<h3>
+						Time/Space Complexity of different approaches
+					</h3>
 					<div>
-						<h3>
-							Introduction
-						</h3>
-					</div>
-					<div>
-						<div class="left-align">
-							Graph reachability (or simply reachability) queries have being studied and are deemed to be a very basic type of graph queries
-							for many applications.
-						</div>
-						<div class="left-align small">
-							<br> - To understand whether two people are related for security reasons
-							<br> - Find all genes whose expressions are directly or indirectly influenced by a given molecule
-						</div>
+						<img src ="./images/complexity.png">
 					</div>
 				</section>
+			</section>
+			<section>
 				<section data-markdown>
 					<textarea data-template>
 						### Reachability Queries
-						- Let ${G}$ = (${V}$, ${E}$) be a large directed graph that has n nodes and m edges. A reachability queries is denoted as ${u}$ ↝ ${v}$, where
+						- Let ${G}$ = (${V}$, ${E}$) be a large directed graph that has n nodes and m edges. A reachability queries is denoted as <font color="#ff5151">${u}$ ↝ ${v}$</font>, where
 						${u}$ and ${v}$ are two nodes in ${G}$. 
 						
 						- Here, <font color="#008ACD">${u}$ ↝ ${v}$ returns true if and only if there is a directed path in the directed graph
 							${G}$ from ${u}$ to ${v}$.</font>
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Directed graph to DAG 
-						1. Replace a strongly connected component $C\_{i}$ in $G$ by a representative node $v$ in
-						$G^{'}$ 
-						2. All incoming edges and outgoing edges of $C\_{i}$ will be represented as incoming edges and outgoing edges
-						of the representative node $v$ in $G^{'}$
 					</textarea>
 				</section>
 				<section>
@@ -111,30 +95,20 @@
 						![](https://i.imgur.com/9h8nCbE.png)
 					</textarea>
 				</section>
-				<section>
-					<h3>
-						Time/Space Complexity of different approaches
-					</h3>
-					<div>
-						<img src ="./images/complexity.png">
-					</div>
-				</section>
 				<section data-markdown>
-						<textarea data-template>
-							### Single Interval Tree Coding Scheme
-							- Let $G\_s$ $(V, E)$ be a tree. The single interval tree coding scheme (or simply SIT coding scheme) assigns 
-							a node $u$ belongs to $G\_{s}$ a code which is an interval, denoted <font color="#008ACD">$sitcode(u)$ = [$u\_{start}$ , $u\_{end}$]</font>, where $u\_{start}$ and $u\_{end}$ are two numbers such that <font color="#008ACD">$u\_{start}$ < $u\_{end}$</font> .
-							- Here, for a node,$u$, the $u\_{start}$ and $u\_{end}$ are the preorder and postorder values in a depth-first traversal of the tree
-							- <font color="#008ACD" size ="6px">$P\_{sit}$(sitcode(${u}$),sitcode(${v}$)) = $u\_{start}$<$v\_{start}$ ∧ $v\_{end}$<$u\_{end}$</font>
-						</textarea>
-					</section>
-			</section>	
+					<textarea data-template>
+						### Single Interval Tree Coding Scheme
+						
+						![](https://i.imgur.com/ecvjwZu.png)						
+					</textarea>
+				</section>
+			</section>
 			<section>
 				<section data-markdown>
 					<textarea data-template>
 						### Tree + SSPI
 						- SSPI (Surrogate & Surplus Predecessor Index)
-						- The SSPI keeps a <font color="#008ACD">predecessor list</font> for a node ${v}$ in ${G}$, denoted as ${PL(u)}$
+						- The SSPI keeps a <font color="#008ACD">predecessor list</font> for a node ${v}$ in ${G}$, denoted as ${PL(v)}$
 						- Assume that ($v\_{x}$,$v\_{y}$) is the last <font color="#008ACD">non-tree edge</font> on the path from ${u}$ to ${v}$, then
 							- $v\_{y}$ is a <font color="#008ACD">surrogate predecessor</font> of ${v}$ if $v\_{y}$ &#8800; ${v}$
 							- $v\_{x}$ is an <font color="#008ACD">immediate surplus predecessor</font> of ${v}$ <br>if $v\_{y}$ = ${v}$
@@ -163,7 +137,7 @@
 				<section data-markdown>
 					<textarea data-template>
 						### GRIPP
-						- A node in ${G}$ is assigned with <font color="#008ACD">one or more than one SIT codes</font> depending on the number of incoming edges to the node.
+						- A node in ${G}$ is assigned with <font color="#008ACD">one or more than one SIT codes</font> depending on the <font color="#008ACD">number of incoming edges</font> to the node.
 						
 						- The type in the GRIPP index table indicates the type of the incoming edge based on which the node is assigned a SIT code.
 					</textarea>
@@ -194,15 +168,6 @@
 						2. a new coding scheme to encode nodes that can be possibly reached via <font color="#008ACD">non-tree edges</font>
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Dual-labeling
-						- Wang et al. assign modified SIT codes to nodes over a spanning tree of the graph $G$.
-						We call it dual-tree code and denote it as <br> $dtcode(u)$ for $u$ ∈ $G$, in the form of <font color="#008ACD">[$u\_{start}$,$u\_{end}$)</font>
-						- The reachability $u$ ↝ $v$ over the spanning tree can be answered using dtcode($u$) and dtcode($v$) if $v\_{start}$ ∈ dtcode($u$) is true
-						- <font color="#008ACD">$P\_{dt}$ (dtcode($u$), dtcode($v$)) = $v\_{start}$ ∈ dtcode($u$)</font>
-					</textarea>
-				</section>
 				<section>
 					<h3>
 						Dual-labeling
@@ -216,8 +181,17 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### Dual-labeling
-						- The link table maintains the edge transitive closure
+						### Dual-labeling (tree edge)
+						- Wang et al. assign modified SIT codes to nodes over a spanning tree of the graph $G$.
+						We call it dual-tree code and denote it as <br> $dtcode(u)$ for $u$ ∈ $G$, in the form of <font color="#008ACD">[$u\_{start}$,$u\_{end}$)</font>
+						- The reachability $u$ ↝ $v$ over the spanning tree can be answered using dtcode($u$) and dtcode($v$) if $v\_{start}$ ∈ dtcode($u$) is true
+						- <font color="#008ACD">$P\_{dt}$ (dtcode($u$), dtcode($v$)) = $v\_{start}$ ∈ dtcode($u$)</font>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Dual-labeling (non-tree edge)
+						- The <font color="#008ACD">link table</font> maintains the edge transitive closure
 						over the <font color="#008ACD">non-tree edges</font> and therefore is also called a transitive link table
 						- $u$ ↝ $v$ is true if it can find an entry, $i$ →[$j$,$k$),
 						in the transitive link table such as <br>
@@ -228,8 +202,8 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### Dual-labeling
-						- <font size = "6px">The proposed $TLC$ function $N(x,y)$ computes the number of links $i$ → [$j$,$k$) in the
+						### Dual-labeling (non-tree edge)
+						- <font size = "6px">The proposed $TLC$ function <font color="#008ACD">$N(x,y)$</font> computes the number of links $i$ → [$j$,$k$) in the
 						transitive link table that satisfy $i$ ≥ $x$ and $y$ ∈ [$j$,$k$)</font>
 						
 						- <font size = "6px">The following predicate $P\_{dg}$(, ) is defined over the graph via possible non-tree edges.</font>
@@ -272,15 +246,6 @@
 						known as tree cover, over the graph $G$.
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Tree Cover
-						
-						- In order to achieve the optimal tree cover, for a node $v$,
-						it <font color="#008ACD">retains</font> the edge from the immediate predecessor of $v$ with the <font color="#008ACD">maximum number of predecessors</font>
-						 in the original DAG $G$, and <font color="#ff5151">delete</font> the edges from the other <font color="#ff5151">immediate predecessors</font> of $v$.
-					</textarea>
-				</section>
 			</section>
 			<section>
 				<section data-markdown>
@@ -306,32 +271,6 @@
 						$v\_i$ cannot reach any node in the j-th chain, then $p\_{i,j}$ = +∞.
 					</textarea>
 				</section>
-				
-				<section data-markdown>
-					<textarea data-template>
-						### Chain Cover
-						
-						![](https://i.imgur.com/mQgc9xK.png)
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						![](https://i.imgur.com/mznHMVH.png)
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Chain Cover
-						
-						- <font size = "6px">
-						The algorithm shows how to compute chaincode($v\_i$) for every $v\_i$ ∈ $G$.							
-							<br>1. It visits every node in $G$ <font color="#008ACD">in the reverse of topological order</font> (line 3)
-						
-							<br>2. For each node visited, its chaincode($v\_i$) is updated using its immediate successors if the corresponding position in the $l$-th chain, $C\_l$ ,
-							of an immediate successor is smaller than the current position $v\_i$ has in $C\_l$</font>
-						
-					</textarea>
-				</section>
 				<section data-markdown>
 					<textarea data-template>
 						### Chain Cover
@@ -339,6 +278,13 @@
 						- A reachability query $v\_a$ ↝ $v\_d$ can be answered using a predicate $P\_c$(, ) such
 						that $v\_a$ ↝ $v\_d$ is true if and only if $v\_a$ appears at the $p\_{a,j}$ position in a chain $C\_j$
 						and <font color="#008ACD">$p\_{d,j}$ ≤ $p\_{a,j}$</font> . In other words, $v\_a$ can reach $v\_d$ in a chain $C\_j$.
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Chain Cover
+						
+						![](https://i.imgur.com/mQgc9xK.png)
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -353,7 +299,7 @@
 					<textarea data-template>
 						### Min-flow approach
 						
-						- <font size="6px">For every node $v\_i$ ∈ $G$, it adds two nodes, $y\_i$ and $y\_i$ , in $H$ and a directed edge
+						- <font size="6px">For every node $v\_i$ ∈ $G$, it adds two nodes, $x\_i$ and $y\_i$ , in $H$ and a directed edge
 						($x\_i$,$y\_i$) in $H$.</font>
 						
 						- <font size="6px">In other words, <font color="#008ACD">a node in $G$ is represented as an edge in $H$</font>.</font>
@@ -383,23 +329,6 @@
 						- $M\_i$ is the maximum matching of the <font color="#008ACD">bipartite graph</font>
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Bipartite Matching
-
-						1. <font size = "6px">In each successive layers, it finds
-						the<font color="#008ACD"> maximum matching for the bipartite graph</font> induced by the nodes in the two
-						layers (line 1-4). </font>
-
-						2. <font size = "6px">For some unmatched node $v$, it <font color="#008ACD">adds a virtual node $v^{'}$</font> in the
-						top of the two successive layer, in order to be further matched by nodes in the
-						unseen upper layers (line 5-9). </font>
-
-						3. <font size = "6px">A potential edge ($u$,$v^{'}$) for some <font color="#008ACD">$u$ ∈ $V\_{i+2}$ is added</font>
-						, if and only if there is an edge from $u$ to a node $x$ ∈ $V_{i+1}$ and there
-						is an alternating path from $x$ to $v^{'}$</font>
-					</textarea>
-				</section>
 				<section>
 					<h3>
 						Bipartite Matching
@@ -413,11 +342,6 @@
 						</div>
 					</div>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						![](https://i.imgur.com/6Bw9Oip.png)
-					</textarea>
-				</section>
 			</section>
 			<section>
 				<section data-markdown>
@@ -428,9 +352,6 @@
 						$P\_1$,$P\_2$, ... ,$P\_{k'}$. A path 
 						<br><font color="#008ACD">$P\_i$ = $v\_{i1}$ → $v\_{i2}$ → ... → $v\_{ik}$ </font>where $v\_{ij}$ → $v\_{ij+1}$
 						is an edge in $G$.
-
-						- A path cover consists of $k'$ paths such that the union of the nodes in all the paths 
-						is the entire set of nodes in $G$ and the intersection of two paths is empty.
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -475,7 +396,7 @@
 						on the path-tree $T\_P$ .
 						- <font color="#008ACD">ptcode($u$) = (($u\_{start}$,$u\_{end}$), ($u\_x$,$u\_y$))</font>
 						- The first pair is the interval [$u\_{start}$,$u\_{end}$], like SIT code
-						- The second pair ($u\_x$,$u\_y$) is used to record the position of the node $u$ in the
+						- The second pair ($u\_x$,$u\_y$) is used to <font color="#008ACD">record the position</font> of the node $u$ in the
 						path $P\_i$
 						- A reachability query,$u$↝$v$ is true, if the predicate
 						$P\_{pt}$ (ptcode($u$),ptcode($v$)) is true, such as <br>
@@ -526,11 +447,6 @@
 						2. <font size = "6px">In every iteration, 
 						it picks the first ($w$,$d\_w$) and recomputes <font color="#008ACD" size = "6px">$d'\_w$ = ∣S($A\_w$,$w$,$D\_w$)∩$TC'$∣ / (∣$A\_w$∣+∣$D\_w$∣)</font>, 
 						<br>if $d\_w$>$d'\_w$ , the pair ($w$,$d'\_w$) is enqueued into the priority queue. </font>
-						
-						3. <font size = "6px">It repeats until it picks a node $w$ such that $d\_w$ = $d'\_w$ . </font>
-						
-						4. <font size = "6px">In practice, Schenkel et al. find that it only needs to repeat <br>
-						2-3 times in every iteration on average.</font>
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -596,7 +512,7 @@
 						- <font color="#008ACD">For all $d$ ∈ $desc(v)$ ∪ {$v$}, $L\_{in}$($d$)←$L\_{in}$($d$)∪{$u$}</font>
 					</textarea>
 				</section>
-				<section>
+				<!-- <section>
 					<h3>
 						A Flat Partitioning Approach
 					</h3>
@@ -613,7 +529,7 @@
 							<img src ="./images/after-2hop.png" height="195px">
 						</div>
 					</div>
-				</section>
+				</section> -->
 				<section data-markdown>
 					<textarea data-template>
 						### A Hierarchical Partitioning Approach
@@ -737,13 +653,13 @@
 						$k$ × $k$ blocks where each block is a Pseudo-upper triangular matrix.
 					</textarea>
 				</section>
-				<section data-markdown>
+				<!-- <section data-markdown>
 					<textarea data-template>
 						### 3-Hop Cover 
 						![](https://i.imgur.com/5I9cu7V.png)
 						<font size = "6px">(Transitive Closure)</font>
 					</textarea>
-				</section>
+				</section> -->
 				<section data-markdown>
 					<textarea data-template>
 						### 3-Hop Cover 
@@ -906,7 +822,7 @@
 						using the predicate <font color="#008ACD">$P\_{tc}$(, )</font>.</font>
 					</textarea>
 				</section>
-				<section data-markdown>
+				<!-- <section data-markdown>
 					<textarea data-template>
 						- Hash Join		
 							- $Alist$ is a list of pairs ($val(u)$,$post(u)$) for all $u$ ∈ $ext$($A$).
@@ -916,8 +832,8 @@
 						- Join index
 							- The join index is built based on the 2-hop cover codes
 					</textarea>
-				</section>
-				<section data-markdown>
+				</section> -->
+				<!-- <section data-markdown>
 					<textarea data-template>
 						### The General Cases		
 						
@@ -929,7 +845,7 @@
 						approach, and consider how to share the processing cost when it needs to
 						process several Alist and Dlist simultaneously.</font>
 					</textarea>
-				</section>
+				</section> -->
 			</section>
 			<section>
 				<section data-markdown>
